@@ -29,7 +29,9 @@ const tabs = [
 ];
 
 const Search = () => {
+  
   const router = useRouter();
+
   const search = useSearchParams();
   const qTab = new URLSearchParams(search).get("tab");
 
@@ -233,17 +235,17 @@ const Search = () => {
 
       <div className="w-full mx-auto mt-4 rounded border border-grey300">
         <div className="w-full flex items-center rounded-tr rounded-tl border-b border-grey300 justify-between bg-bg2 p-4">
-          <ul className="flex items-center ">
+          <ul className="flex items-center">
             {tabs &&
               tabs.map((tab) => (
                 <li
                   onClick={() => {
-                    router.push(`&tab=${tab.title}`);
+                    router.push(`clearance?dir=search&tab=${tab.title}`);
                   }}
                   style={{
-                    background: tab.title === qTab ? "#D5E4E4" : "transparent",
+                    background: tab.title === qTab ? "#D5E4E4" : "",
                   }}
-                  className="cursor-pointer px-[10px] py-1 bg-bg3 rounded hover:bg-grey300 transition duration-200"
+                  className="cursor-pointer px-[10px] py-1 rounded hover:bg-bg2Hover transition duration-200"
                 >
                   <p
                     style={{

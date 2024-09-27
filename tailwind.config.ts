@@ -13,6 +13,7 @@ const config: Config = {
         foreground: "var(--foreground)",
         bg3: "#D5E4E4",
         bg2: "#F1F8F6",
+        bg2Hover:"#e0e6e4",
         primary: "#FF0000",
         sec800: "#066769",
         sec700: "#008080",

@@ -185,14 +185,14 @@ const Table: FC<TableProps> = ({ data, loading }) => {
                                   </p>)
                             }
                             {
-                                stat.status === 'Status' && (<p className="py-1 w-full bg-canceled rounded">
+                                stat.status === 'Status' && (<p className="py-1 w-full bg-processing text-white rounded">
                                     { stat.status }
                                   </p>)
                             }
                             {
                                 stat.status === 'Delivered' && (<p className="py-1 w-full bg-success rounded">
                                     { stat.status }
-                                  </p>)
+                                </p>)
                             }
                           </div>
                         </td>

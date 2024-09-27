@@ -129,7 +129,6 @@ const CreateNew = () => {
               placeholder="Select from CustomerFile"
               label="Delivery to"
               value=""
-              
             />
 
             <div className="w-full flex items-canter gap-2 mb-2">
