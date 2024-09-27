@@ -1,0 +1,6 @@
+// export const baseUrl = 'https://fx-lms.onrender.com/accounts'
+export const baseUrl = 'https://fx-lms-1.onrender.com/accounts'
+// export const baseUrlApi = 'https://fx-lms.onrender.com'
+export const baseUrlApi = 'https://fx-lms-1.onrender.com'
+// export const socketUrl = 'ws://fx-lms.onrender.com'
+export const socketUrl = 'wss://fx-lms-1.onrender.com'
