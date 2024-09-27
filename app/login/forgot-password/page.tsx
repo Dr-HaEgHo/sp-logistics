@@ -1,14 +1,14 @@
 "use client";
 import { FilledButton } from "@/components/Button";
-import { InputFade, PasswordInputFade } from "@/components/Input";
+import { InputFade } from "@/components/Input";
 import { LoadButton } from "@/components/Load";
 import ResetPassword from "@/components/login/ResetPassword";
 import TitleHeaderLogin from "@/components/login/TitleHeaderLogin";
 import VerificationCode from "@/components/login/VerificationCode";
-import { emailSchema, loginSchema } from "@/schemas";
+import { emailSchema } from "@/schemas";
 import { useFormik } from "formik";
-import Image from "next/image";
-import Link from "next/link";
+// import Image from "next/image";
+// import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -20,10 +20,11 @@ const Page = () => {
 
   const [formButtonDisabled, setFormButtonDisabled] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
-  const [isRemembered, setIsRemembeered] = useState<boolean>(false);
+  // const [isRemembered, setIsRemembeered] = useState<boolean>(false);
 
   const onSubmit = () => {
     router.push('?page=enter-code')
+    console.log(formButtonDisabled)
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =

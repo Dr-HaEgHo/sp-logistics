@@ -6,8 +6,6 @@ import CardLoader from "@/components/CardLoader";
 import SomethingWentWrong from "@/components/SomethingWentWrong";
 import { getLatestCourses, getOngoingCourses } from "@/store/courses/courseAction";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { innerCourses } from "@/types";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -21,9 +19,8 @@ const ongoing = [
   {id:6}
 ]
 
-const page = () => {
+const Page = () => {
 
-  const router = useRouter()
   const dispatch = useAppDispatch()
   const userDetails = useAppSelector(state => state.auth.userDetails)
   const latest = useAppSelector((state) => state.courses.latestCourses);
@@ -109,7 +106,7 @@ const page = () => {
               <>
                 {latest ? (
                   latest.slice(0,3).map((item, idx) => (
-                    <div className={`w-full md:w-[33%] ${idx === 2 && 'hidden md:flex' } ${idx === 1 && 'hidden sm:flex' }`}>
+                    <div key={idx} className={`w-full md:w-[33%] ${idx === 2 && 'hidden md:flex' } ${idx === 1 && 'hidden sm:flex' }`}>
                       {/* <LatestCard data={item} action={()=> {router.push(`/dashboard/courses?id=${item.id}`)}}/> */}
                     </div>
                   ))
@@ -135,7 +132,7 @@ const page = () => {
                 ongoingLoading === true ? (<CardLoader/>): (<>
                     {ongoing !== null && ongoing ? (
                     ongoing.slice(0,3).map((item, idx) => (
-                        <div className={`w-full md:w-[33%] ${idx === 2 && 'hidden md:flex' } ${idx === 1 && 'hidden sm:flex' }`}>
+                        <div key={idx} className={`w-full md:w-[33%] ${idx === 2 && 'hidden md:flex' } ${idx === 1 && 'hidden sm:flex' }`}>
                         {/* <OngoingCard data={item} action={()=> {router.push(`/dashboard/courses?id=${item?.course?.id}`)}} /> */}
                         </div>
                     ))
@@ -153,4 +150,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

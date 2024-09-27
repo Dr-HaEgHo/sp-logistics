@@ -2,7 +2,7 @@
 import ImageSlider from "@/components/ImageSlider";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (

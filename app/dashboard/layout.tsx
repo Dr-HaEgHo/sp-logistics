@@ -4,7 +4,7 @@ import Sidebar from '@/components/Sidebar';
 import { GlobalContext } from '@/context/context';
 import React, { useContext } from 'react'
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
 
     const { mainSidebarOpen } = useContext(GlobalContext);
 
@@ -39,4 +39,4 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     )
 }
 
-export default layout;
+export default Layout;

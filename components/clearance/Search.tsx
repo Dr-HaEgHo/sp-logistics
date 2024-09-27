@@ -13,6 +13,7 @@ import {
 } from "iconsax-react";
 import Table from "../Table";
 import { useRouter, useSearchParams } from "next/navigation";
+import Modal from "../Modal";
 
 const codes = [
   { id: 1, name: "Business" },
@@ -33,6 +34,7 @@ const Search = () => {
   const qTab = new URLSearchParams(search).get("tab");
 
   const { headerInfo, setHeaderInfo } = useContext(GlobalContext);
+  const [modalOpen, setmodalOpen ] = useState<boolean>(false)
   const [customer, setCustomer] = useState<string>("");
   const [checked, setChecked] = useState<boolean>(false);
 
@@ -43,6 +45,9 @@ const Search = () => {
 
   return (
     <div className="w-full">
+        <Modal isOpen={modalOpen} setIsOpen={setmodalOpen}>
+            <div></div>
+        </Modal>
       {/* top section wwith the header Info */}
       <div className="w-full flex justify-between mb-12">
         <h2 className="font-medium text-[22px] text-black">{headerInfo}</h2>

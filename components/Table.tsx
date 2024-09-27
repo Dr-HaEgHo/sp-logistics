@@ -74,7 +74,7 @@ const Table: FC<TableProps> = ({ data, loading }) => {
                 <th className="table-header">
                   <h4>Arrival date</h4>
                 </th>
-                <th className="table-header">
+                <th className="table-header max-w-[167px]">
                   <h4>Status</h4>
                 </th>
                 <th className="w-[51px]">
@@ -84,7 +84,7 @@ const Table: FC<TableProps> = ({ data, loading }) => {
             </thead>
 
             <tbody
-              className={`flex flex-col gap-4 ${
+              className={`flex flex-col ${
                 loading && "animate-pulse w-full flex flex-col mt-4 px-4 mb-4"
               }`}
             >
@@ -94,7 +94,7 @@ const Table: FC<TableProps> = ({ data, loading }) => {
                 <>
                   {status &&
                     status.map((stat) => (
-                      <tr className="w-full flex items-center px-2 justify-between hover:bg-sidebarTxtHover active:bg-sidebarTxtActive transition duration-200 cursor-pointer">
+                      <tr className="w-full flex items-center border-b px-2 justify-between hover:bg-sidebarTxtHover active:bg-sidebarTxtActive transition duration-200 cursor-pointer">
                         <td className="table-body !border-l-0 !justify-start">
                           <div className="flex items-center gap-2">
                             {/* checkboxes */}
@@ -167,31 +167,31 @@ const Table: FC<TableProps> = ({ data, loading }) => {
                             </div>
                           </div>
                         </td>
-                        <td className="table-body">
+                        <td className="table-body max-w-[167px]">
                           <div className="w-full p-[10px]">
                             {
                                 stat.status === 'Canceled' && (<p className="py-1 w-full bg-canceled rounded">
-                                    Canceled
+                                    { stat.status }
                                   </p>)
                             }
                             {
-                                stat.status === 'Waiting For Documents' && (<p className="py-1 w-full bg-canceled rounded">
-                                    
+                                stat.status === 'Waiting For Documents' && (<p className="py-1 w-full bg-pending rounded">
+                                    { stat.status }
                                   </p>)
                             }
                             {
-                                stat.status === 'Under Process' && (<p className="py-1 w-full bg-canceled rounded">
-                                    Canceled
+                                stat.status === 'Under Process' && (<p className="py-1 w-full bg-processing text-white rounded">
+                                    { stat.status }
                                   </p>)
                             }
                             {
-                                stat.status === 'Canceled' && (<p className="py-1 w-full bg-canceled rounded">
-                                    status
+                                stat.status === 'Status' && (<p className="py-1 w-full bg-canceled rounded">
+                                    { stat.status }
                                   </p>)
                             }
                             {
-                                stat.status === 'Canceled' && (<p className="py-1 w-full bg-canceled rounded">
-                                    status
+                                stat.status === 'Delivered' && (<p className="py-1 w-full bg-success rounded">
+                                    { stat.status }
                                   </p>)
                             }
                           </div>

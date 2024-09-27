@@ -9,7 +9,7 @@ const tabs = [
   
 ]
 
-const page = () => {
+const Page = () => {
 
   const [index, setIndex] = useState(0)
 
@@ -71,4 +71,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
