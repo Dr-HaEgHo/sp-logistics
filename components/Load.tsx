@@ -1,10 +1,10 @@
 'use client'
-import Image from "next/image";
+// import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const Load = () => {
 
-  const [ dots, setDots] = useState<number>(0);
+  // const [ dots, setDots] = useState<number>(0);
 
   useEffect(() => {
   }, [])

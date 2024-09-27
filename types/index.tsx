@@ -7,6 +7,17 @@ export interface emailInputProps {
   setValue: Function;
 }
 
+export interface socialType{
+  data: {
+    id: number;
+    text: string;
+    to: string;
+    image: 'string';
+    description: string;
+    channel: string;
+  },
+  btnClass?: string;
+}
 
 export interface emailInputPropsFade {
   id?: string;
