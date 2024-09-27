@@ -110,7 +110,7 @@ const Table: FC<TableProps> = ({ data, loading }) => {
                                 />
                               ) : (
                                 <Image
-                                  src={require("../assets/icons/Checkbox.svg")}
+                                  src={require("../assets/icons/checkbox.svg")}
                                   alt="unchecked"
                                   className="w-6 h-6 object-cover p-[1px]"
                                 />

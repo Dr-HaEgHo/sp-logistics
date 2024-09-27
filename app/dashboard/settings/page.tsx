@@ -1,6 +1,6 @@
 'use client'
-import Profile from '@/components/settings/Profile'
-import Security from '@/components/settings/Security'
+// import Profile from '@/components/settings/Profile'
+// import Security from '@/components/settings/Security'
 import React, { useState } from 'react'
 
 const tabs = [
@@ -56,10 +56,10 @@ const page = () => {
           </div>
 
 
-          <div className='w-[362px] mt-[40px]' >
+          {/* <div className='w-[362px] mt-[40px]' >
             {index === 0 && <Profile />}
             {index === 1 && <Security />}
-          </div>
+          </div> */}
 
 
 

@@ -118,7 +118,7 @@ const Page = () => {
                     />
                   ) : (
                     <Image
-                      src={require("../../assets/icons/Checkbox.svg")}
+                      src={require("../../assets/icons/checkbox.svg")}
                       alt="unchecked"
                       className="w-5 h-5 object-cover p-[1px]"
                     />
