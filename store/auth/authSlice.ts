@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
-import { getProfileData, login, signup, updateProfileData } from "./authActions";
+import { getProfileData, login, signup } from "./authActions";
 import { UserDetails } from "@/types";
 
 interface AuthState {
@@ -98,17 +98,7 @@ export const authSlice = createSlice({
       state.loading = false;
     });
 
-    // ==================================================== UPDATE PROFILE DATA
-    builder.addCase(updateProfileData.pending, (state, { payload }) => {
-      state.loading = true;
-    }),
-    builder.addCase(updateProfileData.fulfilled, (state, { payload }) => {
-      state.loading = false;
-      state.userDetails = payload?.data;
-    }),
-    builder.addCase(updateProfileData.rejected, (state, { payload }) => {
-      state.loading = false;
-    });
+  
   },
 });
 

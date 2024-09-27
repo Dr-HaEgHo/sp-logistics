@@ -3,10 +3,18 @@ import { UserDetails, loginType, signUpType } from "@/types";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { RootState } from "../store";
-import { updateDetails } from "@/app/dashboard/profile/page";
 import cogoToast from "cogo-toast";
 
 // const baseUrl = process.env.BASE_URL
+
+interface updateDetails {
+  values: {
+    first_name: string;
+    last_name: string;
+    phone_number: string;
+    photo : string
+  }
+}
 
 // ================================================================= SIGN UP
 export const signup = createAsyncThunk(
@@ -118,52 +126,3 @@ export const getProfileData = createAsyncThunk(
   }
 );
 
-
-// ================================================================= UPDATE PROFILE DATA
-
-
-export const updateProfileData = createAsyncThunk(
-  "updateProfileData",
-  async ( values: updateDetails, { rejectWithValue, getState, dispatch }
-  ) => {
-    const { auth } = getState() as RootState
-    try {
-      const res = await axios.patch(
-        `${baseUrl}/update-profile/`,
-        {
-          first_name: values.firstname,
-          last_name: values.lastname,
-          phone_number: "+" + values.phoneNumber.toString(),
-          photo : values.photo
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization" : `Bearer ${auth.userToken}`
-          },
-        }
-      );
-      setTimeout(() => {
-        // if(!res.status){
-          // alert('time don reach boss.')
-        // }
-      }, 1000)
-      if (res.status === 200 || res.status === 201) {
-        cogoToast.success('Update Successful')
-        dispatch(getProfileData())
-        return res;
-      }
-    } catch (err: any) {
-      
-      if (err.response.status === 400) {
-        console.log('the update error: ', err)
-        cogoToast.error(err.response.data.phone_number || err.response.data.first_name || err.response.data.email || err.response.data.last_name || err.response.data.username)
-        return rejectWithValue(err.response);
-      } else {
-        return rejectWithValue(err.response);
-      }
-
-      // return rejectWithValue(err);
-    }
-  }
-);
