@@ -10,9 +10,14 @@ import {
   ArrowRight,
   ArrowRight2,
   ArrowRight3,
+  SearchNormal1,
 } from "iconsax-react";
 import Table from "../Table";
 import { useRouter, useSearchParams } from "next/navigation";
+import Modal from "../Modal";
+import DeliveryTable from "../DeliveryTable";
+import DeliveryFilled from "../DeliveryFilled";
+import { DeliveryProps } from "@/types";
 
 const codes = [
   { id: 1, name: "Business" },
@@ -35,7 +40,9 @@ const CreateNew = () => {
   const { headerInfo, setHeaderInfo } = useContext(GlobalContext);
   const [customer, setCustomer] = useState<string>("");
   const [checked, setChecked] = useState<boolean>(false);
-
+  const [ deliOpen, setDeliOpen] = useState<boolean>(false);
+  const [ deli, setDeli ] = useState<DeliveryProps | null>(null)
+  
   // set the header info in context on component mount
   useEffect(() => {
     setHeaderInfo("Create New");
@@ -43,6 +50,25 @@ const CreateNew = () => {
 
   return (
     <div className="w-full">
+      <Modal isOpen={deliOpen} setIsOpen={setDeliOpen}>
+          <div className="min-w-[844px] max-h-[504px] slim-scroll relative"> 
+            {/* HEader Bar */}
+            <div className="w-full sticky top-0">
+            <div className="px-10 py-4 bg-white ">
+              <p className="text-base text-grey1000 font-medium">Select Delivery Location</p>
+            </div>
+
+            {/* Search */}
+            <div className="px-10 py-3 bg-white border flex items-center gap-4 border-sec700">
+              <SearchNormal1 className="text-grey700" size={24}/>
+              <input type="text" className="text-[13px] placeholder:text-grey500" placeholder="Search"/>
+            </div>
+            </div>
+
+            <DeliveryTable setValue={setDeli} setOpen={setDeliOpen}/>
+          </div>
+          
+      </Modal>
       {/* top section wwith the header Info */}
       <div className="w-full flex flex-col justify-between mb-12">
         <h2 className="font-medium text-[22px] text-black">{headerInfo}</h2>
@@ -113,7 +139,7 @@ const CreateNew = () => {
               placeholder="Select Port"
               data={codes}
             />
-            <DropDownFade
+            <DropDownFade 
               type="text"
               value={customer}
               setValue={setCustomer}
@@ -123,15 +149,23 @@ const CreateNew = () => {
             />
           </div>
 
-          <div className="w-full flex items-end gap-[26px]">
-            <FileInputFade
-              id="select custimer"  
-              placeholder="Select from CustomerFile"
-              label="Delivery to"
-              value=""
-            />
+          <div className="w-full flex items-start gap-[26px]">
+            {
+              deli !== null ? (<DeliveryFilled label="Delivery to" data={deli} setData={setDeli}/>) : (
+              <FileInputFade
+                id="select customer"  
+                placeholder="Select from CustomerFile"
+                label="Delivery to"
+                value=""
+                cta={() => {setDeliOpen(!deliOpen)}}
+              />)
+            }
+            
+            
 
-            <div className="w-full flex items-canter gap-2 mb-2">
+
+          {/* `RADIO STYLED CKECK BUTTON` */}
+            <div className="w-full flex items-canter gap-2 mt-12">
               {/* RADIO BUTTON */}
               <div
                 className="cursor-pointer flex item-center justify-center"

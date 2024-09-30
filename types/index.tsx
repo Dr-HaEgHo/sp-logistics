@@ -63,9 +63,11 @@ export interface pwInputProps {
   setValue?: Function;
   value: any;
   error?: string | undefined;
+  cta?: () => void;
   isDisabled?: boolean;
   lClass?: string;
   iClass?: string;
+  type?:string;
   touched?: boolean | undefined;
   handleChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
   blur?: React.FocusEventHandler<HTMLInputElement> | undefined;
@@ -301,9 +303,18 @@ export interface chatDetailsData {
 
 export interface button {
   cta?:() => void;
-  text: string;
+  text?: string;
   pClass?: string;
   btnClass?: string;
   image?:string;
   children?: React.ReactNode;
+}
+
+
+export interface DeliveryProps {
+  acctNo: string;
+  name: string;
+  city?: string;
+  address: string;
+  contact?: string;
 }

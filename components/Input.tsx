@@ -75,10 +75,36 @@ export const FileInputFade: FC<pwInputProps> = (props) => {
         <div className='input-wrap' >
             <label className={`labels ${props.lClass}`}>{props.label && props.label}</label>
             <div className={`password-input`} >
-                <input id={props.id} className={`file-input cursor-pointer z-10 ${props.iClass}`} value={props.value} type="file" onChange={props.handleChange} onBlur={props.blur} disabled={props?.isDisabled} placeholder={props.placeholder && props.placeholder} />
-                <div onClick={handleClick} className='absolute cursor-pointer pointer-events-none bg-bg2 border border-grey500 rounded-tr rounded-br hover:bg-bg3 active:bg-bg2 transition duration-200 h-10 w-10 right-0  top-1/2 transform -translate-y-1/2 flex items-center justify-center text-icons'>
+                <input id={props.id} className={`file-input cursor-pointer z-10 ${props.iClass}`} value={props.value} type={props.type ? "text" : "text"} onChange={props.handleChange} onBlur={props.blur} disabled={props?.isDisabled} placeholder={props.placeholder && props.placeholder} />
+                <div onClick={props.cta} className='absolute cursor-pointer bg-bg2 border border-grey500 rounded-tr rounded-br hover:bg-bg3 active:bg-bg2 transition duration-200 h-10 w-10 right-0  top-1/2 transform -translate-y-1/2 flex items-center justify-center text-icons'>
                     <Image 
                         src={require('../assets/icons/select-window.svg')}
+                        alt='select window'
+                    />
+                </div>
+            </div>
+            { props.error && <p className='text-error text-[10px] italic'>{props.error}</p>}
+        </div>
+    )
+}
+
+
+export const DateInputFade: FC<pwInputProps> = (props) => {
+
+    const [isOpen, setIsOpen] = useState(false)
+
+    const handleClick = () => {
+        setIsOpen(prev => prev = !prev)
+    }
+
+    return (
+        <div className='input-wrap' >
+            <label className={`labels ${props.lClass}`}>{props.label && props.label}</label>
+            <div className={`password-input`} >
+                <input id={props.id} className={`file-input cursor-pointer z-10 ${props.iClass}`} value={props.value} type={'date'} onChange={props.handleChange} onBlur={props.blur} disabled={props?.isDisabled} placeholder={props.placeholder && props.placeholder} />
+                <div onClick={props.cta} className='absolute cursor-pointer rounded-tr rounded-br pointer-events-none bg-white hover:bg-grey100 active:bg-bg2 transition duration-200 h-8 w-12 right-2  top-1/2 transform -translate-y-1/2 flex items-center justify-center text-icons'>
+                    <Image 
+                        src={require('../assets/icons/Calendar.svg')}
                         alt='select window'
                     />
                 </div>

@@ -175,15 +175,39 @@ input:disabled{
 }
 
 .table-body{
-  @apply text-dark900 h-[65px] text-sm text-center font-normal flex flex-1 items-center justify-center border-l border-r
+  @apply text-dark900 h-[65px] text-sm text-center font-normal flex flex-1 items-center justify-center border-r
+}
+
+.table-header-green{
+  @apply text-dark900 h-[54px] border-tableBorderGreen text-sm text-center font-normal flex flex-1 items-center justify-center bg-grey100 border-l border-b
+}
+
+.table-body-green{
+  @apply text-dark900 h-[65px] text-sm border-tableBorderGreen text-center font-normal flex flex-1 items-center justify-center border-l border-b border-t
+}
+
+.table-header-green-2{
+  @apply text-dark900 h-[54px] border-tableBorderGreen text-sm text-center font-normal flex flex-1 items-center justify-start pl-[10px] bg-grey100 border-l
+}
+
+.table-body-green-2{
+  @apply text-dark900 h-[65px] text-sm border-tableBorderGreen text-center font-normal flex flex-1 items-center justify-start pl-[10px] border-l
+}
+
+.table-header-green-3{
+  @apply text-dark900 h-[54px] border-tableBorderGreen text-sm text-center font-normal flex flex-1 items-center justify-center bg-grey100 border-l
+}
+
+.table-body-green-3{
+  @apply text-dark900 h-[65px] text-sm border-tableBorderGreen text-center font-normal flex flex-1 items-center justify-center border-l
 }
 
 .card-open {
-  width: 30%;
-  max-width: 600px;
+  width: fit-content;
+  /* max-width: 600px; */
   background: #fff;
-  border-radius: 6px;
-  overflow: hidden;
+  /* border-radius: 6px; */
+  /* overflow: hidden; */
   position: absolute;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   animation: dropIn .5s ease-in-out;
@@ -194,12 +218,12 @@ input:disabled{
 }
 
 .card-close {
-  width: 30%;
-  max-width: 600px;
+  width: fit-content;
+  /* max-width: 600px; */
   background: #fff;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   position: absolute;
-  overflow: hidden;
+  /* overflow: hidden; */
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   animation: dropIn .5s ease-in-out;
   top: 0%;

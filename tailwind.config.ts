@@ -35,6 +35,14 @@ const config: Config = {
         error: "#FF2323",
         mainBg: "#F8F4F3",
         noteGreen: "#008080",
+        tableBorderGreen: "#D1E6E6",
+        tableHeaderGreen: "#F1F8F6",
+
+
+        accept: "#30A149",
+        acceptLight: "#9CE8A2",
+        dismiss: "#ff0000",
+        dismissLight: "#F6B0AB",
 
 
         canceled: "#F6B0AB",
@@ -43,6 +51,8 @@ const config: Config = {
         processing: "#4F4F4F",
 
         disabledBorder: "#DFDDDD",
+        deliInputBorder: "#B5B4B4",
+        deliInputText: "#A4A3A3",
       },
 
     },

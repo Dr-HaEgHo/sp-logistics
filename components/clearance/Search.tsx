@@ -10,10 +10,14 @@ import {
   ArrowRight,
   ArrowRight2,
   ArrowRight3,
+  CloseCircle,
 } from "iconsax-react";
 import Table from "../Table";
 import { useRouter, useSearchParams } from "next/navigation";
 import Modal from "../Modal";
+import DeliveryTable from "../DeliveryTable";
+import FlieActionTable from "../FileActionTable";
+import FileStatusTable from "../FileStatusTable";
 
 const codes = [
   { id: 1, name: "Business" },
@@ -29,14 +33,13 @@ const tabs = [
 ];
 
 const Search = () => {
-  
   const router = useRouter();
-
+ 
   const search = useSearchParams();
   const qTab = new URLSearchParams(search).get("tab");
 
   const { headerInfo, setHeaderInfo } = useContext(GlobalContext);
-  const [modalOpen, setmodalOpen ] = useState<boolean>(false)
+  const [modalOpen, setmodalOpen] = useState<boolean>(true);
   const [customer, setCustomer] = useState<string>("");
   const [checked, setChecked] = useState<boolean>(false);
 
@@ -47,9 +50,54 @@ const Search = () => {
 
   return (
     <div className="w-full">
-        <Modal isOpen={modalOpen} setIsOpen={setmodalOpen}>
-            <div></div>
-        </Modal>
+      <Modal isOpen={modalOpen} setIsOpen={setmodalOpen}>
+        <div className="w-[1320px] min-w-[844px] min-h-[900px] slim-scroll bg-grey100 relative">
+          {/* HEader Bar */}
+          <div className="w-full sticky top-0 z-[999]">
+            <div className="px-[60px] py-[34px] bg-white ">
+              <p className="text-base text-grey1000 font-medium">
+                Files From Other Departments
+              </p>
+            </div>
+          </div>
+
+          {/* Search */}
+          <div className="px-10 pt-4 mb-[100px] bg-grey100">
+            <FlieActionTable />
+
+            {/* Accept All and Dismiss all buttons */}
+            <div className="w-full flex items-center gap-4 justify-end mt-6">
+              <div className="border border-sec700 rounded py-2 px-4 flex flex-row-reverse items-center justify-center gap-1">
+                <FilledButton
+                  text="Dismiss All"
+                  pClass="font-medium text-sec700 text-lg"
+                  btnClass="!w-fit !p-0"
+                />
+                <CloseCircle className="text-sec700 " size={24} />
+              </div>
+
+              <div className="bg-primary py-2 px-4 flex flex-row-reverse items-center rounded justify-center gap-1">
+                <FilledButton
+                  text="Accept All"
+                  pClass="font-medium text-white text-lg"
+                  btnClass="!w-fit !p-0 "
+                />
+                <CloseCircle className="text-white" size={24} />
+              </div>
+            </div>
+          </div>
+
+          <div className="px-10 pt-4 bg-grey100 relative">
+            <div className="w-2 h-[17px] absolute left-0 bg-sec700 top-6"/>
+            <div className="mb-4">
+              <h4 className="font-medium text-[22px] text-grey1000">Sent Files History</h4>
+            </div>
+            <FileStatusTable />
+          </div>
+
+
+        </div>
+      </Modal>
       {/* top section wwith the header Info */}
       <div className="w-full flex justify-between mb-12">
         <h2 className="font-medium text-[22px] text-black">{headerInfo}</h2>

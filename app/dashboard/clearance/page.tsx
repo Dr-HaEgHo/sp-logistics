@@ -1,5 +1,8 @@
 'use client'
+import AirMovement from '@/components/clearance/AirMovement';
 import CreateNew from '@/components/clearance/CreateNew';
+import LandMovement from '@/components/clearance/LandMovement';
+import OceanMovement from '@/components/clearance/OceanMovement';
 import Search from '@/components/clearance/Search';
 import Load from '@/components/Load';
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -33,6 +36,15 @@ const Page = () => {
           }
           {
               dir === 'create-new' && (<CreateNew/>)
+          }
+          {
+              dir === 'air-movement' && (<AirMovement />)
+          }
+          {
+              dir === 'ocean-movement' && (<OceanMovement />)
+          }
+          {
+              dir === 'land-movement' && (<LandMovement />)
           }
         </Suspense>
     </div>
