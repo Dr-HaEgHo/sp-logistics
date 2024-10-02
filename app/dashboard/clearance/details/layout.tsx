@@ -32,6 +32,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const search = useSearchParams();
   const tab = new URLSearchParams(search).get('tab')
 
+ 
+
   useEffect(() => {
     setLayout("custom");
     setAppHeaderInfo('Customs Clearance')
