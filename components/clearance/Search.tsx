@@ -166,7 +166,7 @@ const Search = () => {
               type="number"
               placeholder="Enter Number"
               label="Customer Reference Number"
-            />
+            /> 
             <DropDownFade
               type="text"
               value={customer}

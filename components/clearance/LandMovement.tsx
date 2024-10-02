@@ -28,6 +28,8 @@ import DeliveryFilled from "../DeliveryFilled";
 import { DeliveryProps } from "@/types";
 import FileStatusTable from "../FileStatusTable";
 import DriverTable from "../DriverTable";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const codes = [
   { id: 1, name: "Business" },
@@ -118,54 +120,234 @@ const LandMovement = () => {
       </Modal>
 
       <Modal isOpen={addDriverOpen} setIsOpen={setAddDriverOpen}>
-        <div className="w-[1320px] min-w-[844px] min-h-[400px] slim-scroll bg-white relative">
+        <div className="w-[1320px] min-w-[844px] min-h-[400px] max-h-[900px] slim-scroll bg-white relative">
           {/* HEader Bar */}
 
           <div className="px-10 pt-10 bg-white relative">
             <div className="w-2 h-[17px] absolute left-0 bg-sec700 top-12" />
             <div className="mb-4">
               <h4 className="font-medium text-[22px] text-grey1000">
-                Container Information
+                Truck Information
               </h4>
             </div>
             {/* <FileStatusTable /> */}
+            <div className="pt-4 bg-white grid grid-cols-2 gap-[26px]">
+              <DropDownFade
+                type="text"
+                placeholder="Select Country"
+                label="Vehicle Country"
+                data={codes}
+                setValue={() => {}}
+              />
+
+              <InputFade
+                type="text"
+                label="Truck Serial Number"
+                placeholder="Enter"
+                lClass="text-base text-grey1000 font-normal"
+              />
+
+              <DropDownFade
+                type="text"
+                placeholder="Select City"
+                label="Vehicle City"
+                data={codes}
+                setValue={() => {}}
+              />
+              <InputFade
+                type="text"
+                label="Owner ID"
+                lClass="text-base text-grey1000 font-normal"
+                placeholder="Enter"
+              />
+              <InputFade
+                type="text"
+                label="Plate Number"
+                lClass="text-base text-grey1000 font-normal"
+                placeholder="Enter number"
+              />
+              <InputFade
+                type="text"
+                label="Plate Code"
+                lClass="text-base text-grey1000 font-normal"
+                placeholder="Enter Plate Code"
+              />
+
+              <DropDownFade
+                type="text"
+                placeholder="Select Vehicle Type"
+                label="Vehicle Type"
+                data={codes}
+                setValue={() => {}}
+              />
+
+              <DropDownFade
+                type="text"
+                placeholder="Select Plate Type"
+                label="Plate Type"
+                data={codes}
+                setValue={() => {}}
+              />
+
+              <DropDownFade
+                type="text"
+                placeholder="Select"
+                label="Chassis Number"
+                data={codes}
+                setValue={() => {}}
+              />
+
+              <InputFade
+                type="text"
+                label="RFID card number"
+                lClass="text-base text-grey1000 font-normal"
+                placeholder="Enter"
+              />
+
+              <DropDownFade
+                type="text"
+                placeholder="Select"
+                label="Truck Immersion No"
+                data={codes}
+                setValue={() => {}}
+              />
+
+              <InputFade
+                type="text"
+                label="Truck Color"
+                lClass="text-base text-grey1000 font-normal"
+                placeholder="Enter"
+              />
+
+              <DropDownFade
+                type="text"
+                placeholder="Select"
+                label="Model Number"
+                data={codes}
+                setValue={() => {}}
+              />
+
+              <InputFade
+                type="text"
+                label="WATHIQA Number"
+                lClass="text-base text-grey1000 font-normal"
+                placeholder="Enter"
+              />
+            </div>
           </div>
 
-          <div className="px-10 pt-4 bg-white flex gap-[26px]">
-            <PrefixInput
-              label="Container Number"
-              type="string"
-              type2="number"
-              placeholder="Letters"
-              placeholder2="Enter Number"
-              lClass="text-base text-grey1000 font-normal"
-            />
+          <div className="px-10 pt-10 bg-white relative">
+            <div className="w-2 h-[17px] absolute left-0 bg-sec700 top-12" />
+            <div className="mb-4">
+              <h4 className="font-medium text-[22px] text-grey1000">
+                Driver Information
+              </h4>
+            </div>
+            <div className="pt-4 bg-white grid grid-cols-2 gap-[26px]">
+              <InputFade
+                type="text"
+                label="ID/Residence Number"
+                placeholder="Enter"
+                lClass="text-base text-grey1000 font-normal"
+              />
 
-            <DropDownFade
-              type="text"
-              placeholder="Enter Number"
-              label="Container Size"
-              data={codes}
-              setValue={() => {}}
-            />
+              <DateInputFade
+                id=""
+                value
+                type="text"
+                placeholder="DD/MM/YY"
+                label="Vehicle City"
+                setValue={() => {}}
+              />
 
-            <InputFade
-              type="number"
-              label="Weight"
-              placeholder="Enter number"
-              lClass="text-base text-grey1000 font-normal"
-            />
-            <InputFade
-              type="number"
-              label="Number of Parcels"
-              lClass="text-base text-grey1000 font-normal"
-              placeholder="Enter number"
-            />
+              <DropDownFade
+                type="text"
+                label="Country of Residence"
+                placeholder="Select"
+                data={codes}
+                setValue={() => {}}
+              />
+
+              <InputFade
+                type="text"
+                label="Passport Number"
+                lClass="text-base text-grey1000 font-normal"
+                placeholder="Enter"
+              />
+
+              <InputFade
+                type="text"
+                label="Driver Licence"
+                lClass="text-base text-grey1000 font-normal"
+                placeholder="Enter Number"
+              />
+
+              <DropDownFade
+                type="text"
+                placeholder="Select"
+                label="Nationality"
+                data={codes}
+                setValue={() => {}}
+              />
+
+              <InputFade
+                type="text"
+                label="Driver's Name in Arabic"
+                lClass="text-base text-grey1000 font-normal"
+                placeholder="Enter Name"
+              />
+
+              <DateInputFade
+                id=""
+                value
+                type="text"
+                placeholder="DD/MM/YY"
+                label="Date of Birth"
+                setValue={() => {}}
+              />
+
+              <InputFade
+                type="text"
+                label="Driver's Name in English"
+                lClass="text-base text-grey1000 font-normal"
+                placeholder="Enter Name"
+              />
+
+              <div className="w-full flex flex-col input-wrap !p-0">
+                <label className="labels">Mobile Number</label>
+                <PhoneInput
+                  country={"sa"}
+                  placeholder="Enter phone number"
+                  value=""
+                  // onChange={}
+                  searchStyle={{
+                    width: "100%",
+                    display: "flex",
+                    gap: "14px",
+                  }}
+                  inputStyle={{
+                    width: "100%",
+                    height: 40,
+                    padding: "10px 70px",
+                    border: "1px #888888 solid",
+                    background: "none",
+                    fontSize: "15px",
+                    color: "#333"
+                  }}
+                  buttonStyle={{
+                    border: "1px #888888 solid",
+                    background: "none",
+                    padding: "10px ",
+                    width: 60,
+                  }}
+                />
+              </div>
+            </div>
           </div>
 
-          <div className="px-10 mt-10 bg-white flex items-center justify-start">
+          <div className="px-10 my-[60px] bg-white flex items-center gap-4 justify-end">
             <FilledButton
-              text="Add Container"
+              text="Save & Add more"
               image={require("../../assets/icons/add-sec700.svg")}
               btnClass="border border-sec700 rounded !w-fit px-4 !h-fit"
               pClass="font-medium text-sec700 text-lg"
@@ -173,15 +355,11 @@ const LandMovement = () => {
                 setAddDriverOpen(false);
               }}
             />
-          </div>
-         
-          <div className="px-10 mt-[60px] bg-white flex items-center justify-end">
             <FilledButton
               text="Save"
               btnClass="bg-primary rounded !w-fit px-7 !h-fit"
               pClass="font-medium text-white text-lg"
-              cta={() => {
-              }}
+              cta={() => {}}
             />
           </div>
         </div>
@@ -254,14 +432,11 @@ const LandMovement = () => {
               data={codes}
               setValue={() => {}}
             />
-              <InputFade
-                type="number"
-                placeholder="Enter Number"
-                label="Number of Trucks"
-              />
-
-
-              
+            <InputFade
+              type="number"
+              placeholder="Enter Number"
+              label="Number of Trucks"
+            />
           </div>
 
           <div className="w-full flex items-center gap-[26px]">
@@ -300,18 +475,18 @@ const LandMovement = () => {
       {/* Form section to fill details */}
       <div className="w-full mx-auto mb-12">
         <div className="w-full flex items-center justify-start mb-7">
-            <FilledButton
-                text="Add Drivers&Trucks"
-                image={require("../../assets/icons/add-sec700.svg")}
-                btnClass="border border-sec700 rounded !px-4 !py-[9px] !w-fit !h-fit"
-                pClass="font-medium text-sec700 text-lg"
-                cta={() => {
-                  setAddDriverOpen(true);
-                }}
-              />
+          <FilledButton
+            text="Add Drivers&Trucks"
+            image={require("../../assets/icons/add-sec700.svg")}
+            btnClass="border border-sec700 rounded !px-4 !py-[9px] !w-fit !h-fit"
+            pClass="font-medium text-sec700 text-lg"
+            cta={() => {
+              setAddDriverOpen(true);
+            }}
+          />
         </div>
         <div>
-            <DriverTable />
+          <DriverTable />
         </div>
       </div>
 

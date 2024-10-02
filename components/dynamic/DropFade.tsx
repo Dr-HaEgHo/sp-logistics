@@ -51,7 +51,7 @@ const DropFade: FC<dropDownProps> = (props) => {
                 <input onChange={handleChange} value={props.value} className={`input ${props.iClass}`} type={props?.type} placeholder={props.placeholder && props.placeholder} />
                 <div onClick={handleClick} className='absolute cursor-pointer right-[10px] top-1/2 transform -translate-y-1/2 flex items-center justify-center text-icons '>
                     {
-                        isOpen ? (<ArrowUp2 variant="Bold" size="20" />) : (<ArrowDown2 variant="Bold" size="20" />)
+                        isOpen ? (<ArrowUp2 variant="Bold" size="20" className='text-grey1000' />) : (<ArrowDown2 variant="Bold" size="20" className='text-grey1000'/>)
                     }
                 </div>
 

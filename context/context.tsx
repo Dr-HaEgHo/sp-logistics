@@ -40,10 +40,14 @@ interface ContextProps {
   setMessages: Dispatch<SetStateAction<messagesData[] | null>>;
   chatId: string;
   setChatId : Dispatch<SetStateAction<string>>;
+  appHeaderInfo : string;
+  setAppHeaderInfo: Dispatch<SetStateAction<string>>;
   headerInfo : string;
   setHeaderInfo: Dispatch<SetStateAction<string>>;
   infoMsg: string;
   setInfoMsg: Dispatch<SetStateAction<string>>;
+  layout: string;
+  setLayout: Dispatch<SetStateAction<string>>;
 }
 
 // const initialState = {
@@ -71,10 +75,14 @@ export const GlobalContext = createContext<ContextProps>({
   setMessages: () : messagesData[] | null => null,
   chatId: '',
   setChatId : () :string => '',
+  appHeaderInfo: '',
+  setAppHeaderInfo: () : string => '',
   headerInfo: '',
   setHeaderInfo: () : string => '',
   infoMsg: '',
-  setInfoMsg: () : string => ''
+  setInfoMsg: () : string => '',
+  layout: '',
+  setLayout: () : string => ''
 });
 
 export const GlobalContextProvider = ({
@@ -96,6 +104,8 @@ export const GlobalContextProvider = ({
   const [ chatId, setChatId ] = useState<string>('')
   const [ infoMsg, setInfoMsg ] = useState<string>('')
   const [ headerInfo, setHeaderInfo ] = useState<string>('')
+  const [ appHeaderInfo, setAppHeaderInfo ] = useState<string>('')
+  const [ layout, setLayout ] = useState<string>('')
 
   return (
     <GlobalContext.Provider
@@ -122,8 +132,12 @@ export const GlobalContextProvider = ({
         setChatId,
         headerInfo, 
         setHeaderInfo,
+        appHeaderInfo, 
+        setAppHeaderInfo,
         infoMsg,
         setInfoMsg,
+        layout,
+        setLayout
       }}
     >
       {children}

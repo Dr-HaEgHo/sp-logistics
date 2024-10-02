@@ -4,9 +4,9 @@ import Sidebar from '@/components/Sidebar';
 import { GlobalContext } from '@/context/context';
 import React, { useContext } from 'react'
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const layout = ({ children }: { children: React.ReactNode }) => {
 
-    const { mainSidebarOpen } = useContext(GlobalContext);
+    const { mainSidebarOpen, layout } = useContext(GlobalContext);
 
     return (
         <div
@@ -25,18 +25,31 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     <Navbar />
                 </div>
 
-                {/* EACH PAGE ROUTED TO FROM THE FILE STRUCTURE */}
-                <div className='h-full w-full scroll-2 py-4 px-5'>
-                    <div className='w-full h-fit min-h-[872px] bg-white rounded relative p-10'>
-                        <div className='bg-sec700 w-2 h-[17px] absolute left-0 top-[46px]'/>
+                {
+                    layout === 'custom' ? (
+                        <div className='h-full w-full scroll-2 py-4 px-5'>
+                    <div className='w-full h-fit min-h-[72px] rounded relative'>
+                        {/* <div className='bg-sec700 w-2 h-[17px] absolute left-0 top-[46px]'/> */}
                         {children}
                         {/* <div className='h-[600px]'></div> */}
                     </div>
                 </div> 
+                    ) : (<div className='h-full w-full scroll-2 py-4 px-5'>
+                        <div className='w-full h-fit min-h-[72px] bg-white rounded relative p-10'>
+                            <div className='bg-sec700 w-2 h-[17px] absolute left-0 top-[46px]'/>
+                            {children}
+                            {/* <div className='h-[600px]'></div> */}
+                        </div>
+                    </div> ) 
+                }
+                {/* EACH PAGE ROUTED TO FROM THE FILE STRUCTURE */}
+                
+                
+                
             </div>
 
         </div>
     )
 }
 
-export default Layout;
+export default layout;

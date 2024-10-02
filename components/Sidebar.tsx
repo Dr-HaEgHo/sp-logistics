@@ -49,6 +49,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/Cust-clear.svg"),
           iconw: require("../assets/icons/Cust-clearw.svg"),
           route: "/dashboard/clearance",
+          route2: "/dashboard/clearance/details",
         },
         {
           id: 2,
@@ -56,6 +57,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/warehouse.svg"),
           iconw: require("../assets/icons/warehousew.svg"),
           route: "/",
+          route2:"/",
         },
         {
           id: 3,
@@ -63,6 +65,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/trans-mgt.svg"),
           iconw: require("../assets/icons/trans-mgtw.svg"),
           route: "/",
+          route2:"/",
         },
         {
           id: 4,
@@ -70,6 +73,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/container-yard.svg"),
           iconw: require("../assets/icons/container-yardw.svg"),
           route: "/",
+          route2:"/",
         },
         {
           id: 5,
@@ -77,6 +81,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/arena-mgt.svg"),
           iconw: require("../assets/icons/arena-mgtw.svg"),
           route: "/",
+          route2:"/",
         },
       ],
     },
@@ -90,6 +95,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/sales-mgt.svg"),
           iconw: require("../assets/icons/sales-mgtw.svg"),
           route: "/",
+          route2:"/",
         },
         {
           id: 2,
@@ -97,6 +103,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/purchase-mgt.svg"),
           iconw: require("../assets/icons/purchase-mgtw.svg"),
           route: "/",
+          route2:"/",
         },
         {
           id: 3,
@@ -104,6 +111,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/general-accounts.svg"),
           iconw: require("../assets/icons/general-accountsw.svg"),
           route: "/",
+          route2:"/",
         },
         {
           id: 4,
@@ -111,6 +119,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/finance-treasury.svg"),
           iconw: require("../assets/icons/finance-treasuryw.svg"),
           route: "/",
+          route2:"/",
         },
         {
           id: 5,
@@ -118,6 +127,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/cheque-cycle.svg"),
           iconw: require("../assets/icons/cheque-cyclew.svg"),
           route: "/",
+          route2:"/",
         },
       ],
     },
@@ -131,6 +141,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/cust-mgt.svg"),
           iconw: require("../assets/icons/cust-mgtw.svg"),
           route: "/",
+          route2:"/",
         },
         {
           id: 2,
@@ -138,6 +149,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/contact-list.svg"),
           iconw: require("../assets/icons/contact-listw.svg"),
           route: "/",
+          route2:"/",
         },
       ],
     },
@@ -151,6 +163,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/organ-chart.svg"),
           iconw: require("../assets/icons/organ-chartw.svg"),
           route: "/",
+          route2:"/",
         },
         {
           id: 2,
@@ -158,6 +171,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/attendes.svg"),
           iconw: require("../assets/icons/attendesw.svg"),
           route: "/",
+          route2:"/",
         },
         {
           id: 3,
@@ -165,6 +179,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/salary.svg"),
           iconw: require("../assets/icons/salaryw.svg"),
           route: "/",
+          route2:"/",
         },
         {
           id: 4,
@@ -172,6 +187,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/employees.svg"),
           iconw: require("../assets/icons/employeesw.svg"),
           route: "/",
+          route2:"/",
         },
       ],
     },
@@ -185,6 +201,7 @@ const Sidebar = () => {
           icon: require("../assets/icons/Settings.svg"),
           iconw: require("../assets/icons/Settingsw.svg"),
           route: "/",
+          route2:"/",
         },
       ],
     },
@@ -236,18 +253,18 @@ const Sidebar = () => {
                         // setActive(item.title);
                       }}
                       className={`transition duration-200 py-[9px] rounded-xl ${
-                        item.route === active && "bg-sec800"
+                        item.route === active || item.route2 === active && "bg-sec800"
                       } hover:bg-grey200`}
                     >
                       <a href={item?.route} className="flex items-center gap-[10px] pl-4">
                         <Image
-                          src={item.route === active ? item.iconw : item.icon}
+                          src={item.route === active || item.route2 === active ? item.iconw : item.icon}
                           alt="link icon"
                           className="w-5 h-5"
                         />
                         <p
                           className={`text-[15px] ${
-                            item.route === active
+                            item.route === active || item.route2 === active
                               ? "text-white font-bold"
                               : "text-grey900 font-medium"
                           }`}

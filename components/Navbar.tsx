@@ -12,7 +12,7 @@ const Navbar = () => {
   const location = usePathname();
   const params = useParams();
   const [searchValue, setSearchValue] = useState("");
-  const { mainSidebarOpen, setMainSidebarOpen } = useContext(GlobalContext);
+  const { appHeaderInfo, mainSidebarOpen, setMainSidebarOpen } = useContext(GlobalContext);
 
   const toggleSidebar = () => {
     setMainSidebarOpen(!mainSidebarOpen);
@@ -22,7 +22,7 @@ const Navbar = () => {
     <div className="w-full h-[88px] bg-white nav-shadow flex items-center justify-center">
       <div className="dash-container">
         <div className="w-full flex items-center justify-between ">
-          <h2 className="font-medium text-base text-grey1000">Dashboard</h2>
+          <h2 className="font-medium text-base text-grey1000">{ appHeaderInfo }</h2>
 
           <div className="flex items-center gap-6">
             <div className="relative">
