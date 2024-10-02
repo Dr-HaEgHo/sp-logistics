@@ -1,9 +1,11 @@
 'use client'
 import { FilledButton } from "@/components/Button";
 import Details from "@/components/clearance/details/Details";
+import NotesAndDocuments from "@/components/clearance/details/NotesAndDocuments";
 import PurchaseInvoice from "@/components/clearance/details/PurchaseInvoice";
 import Quotation from "@/components/clearance/details/Quotations";
 import SalesInvoice from "@/components/clearance/details/SalesInvoice";
+import TrackAction from "@/components/clearance/details/TrackAction";
 import { ArrowDown2 } from "iconsax-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
@@ -35,6 +37,12 @@ const Page = () => {
         }
         {
             tab === 'quotation' && (<Quotation/>)
+        }
+        {
+            tab === 'notes/documents' && (<NotesAndDocuments/>)
+        }
+        {
+            tab === 'track-action' && (<TrackAction/>)
         }
     </div>
   )

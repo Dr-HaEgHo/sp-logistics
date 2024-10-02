@@ -80,7 +80,7 @@ export interface searchInputProps {
 }
 
 export interface dropDownProps {
-  label: string;
+  label?: string;
   placeholder: string;
   type: string;
   data: {
@@ -90,6 +90,7 @@ export interface dropDownProps {
   value?: string;
   setValue: Function;
   iClass?: string;
+  iwClass?: string;
 }
 
 export interface dropDownPropsFade {

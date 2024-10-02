@@ -46,6 +46,12 @@ const config: Config = {
         dismissLight: "#F6B0AB",
 
 
+        high:"#F6B0AB",
+        highLight: "#FFF0F0",
+        medLight: "#FFF5E2",
+        lowLight: "#F6FFF7",
+
+
         canceled: "#F6B0AB",
         success:"#9CE8A2",
         pending: "#FFDC97",

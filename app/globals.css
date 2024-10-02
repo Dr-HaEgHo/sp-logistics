@@ -210,6 +210,14 @@ input:disabled{
   @apply text-dark900 h-[65px] text-sm border-tableBorderGreen text-center font-normal flex flex-1 items-center justify-center border-l
 }
 
+.table-header-green-4{
+  @apply text-dark900 h-[36px] border-tableBorderGreen text-sm text-center font-normal flex flex-1 items-center last:justify-center justify-start pl-4 bg-bg2 border-l
+}
+
+.table-body4{
+  @apply text-dark900 h-[60px] pl-4 text-sm border-tableBorderGreen text-center font-normal flex flex-1 items-center justify-center border-l
+}
+
 .card-open {
   width: fit-content;
   /* max-width: 600px; */
