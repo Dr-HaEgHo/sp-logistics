@@ -22,6 +22,7 @@ const config: Config = {
         dark900: "#383A3A",
         dark800: "#141313",
         dark700: "#262424",
+        dark600: "#373434",
         grey1000: "#262626",
         grey900: "#333333",
         grey800: "#454545",
@@ -56,6 +57,9 @@ const config: Config = {
         success:"#9CE8A2",
         pending: "#FFDC97",
         processing: "#4F4F4F",
+
+        improve: "#41AC46",
+        decline: "#B10303",
 
         successHover:"#8CCE91",
 

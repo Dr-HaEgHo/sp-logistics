@@ -6,6 +6,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import SalesTable from "./SalesTable";
+import QuotationTable from "../QuotationTable";
+import CheckBox from "@/components/CheckBox";
 
 const clients = [
   { id: 1, name: "Any Client" },
@@ -35,7 +37,7 @@ const Quotation = () => {
   const [ checked, setChecked] = useState<boolean>(false)
 
   return (
-    <div className="w-full bg-white p-10 relative">
+    <div className="w-full bg-white p-10 relative"> 
       <div className="w-2 h-[17px] bg-sec700 absolute left-0" />
 
       <div className="w-full bg-white grid grid-cols-3 gap-[26px]">
@@ -81,24 +83,7 @@ const Quotation = () => {
       <div>
           <div className="flex items-center justify-start gap-4">
             <div className="flex items-center gap-2">
-              <div
-                className="cursor-pointer flex item-center justify-center"
-                onClick={() => setChecked(!checked)}
-              >
-                {checked ? (
-                  <Image
-                    src={require("@/assets/icons/check.svg")}
-                    alt="unchecked"
-                    className="w-6 h-6 object-cover"
-                  />
-                ) : (
-                  <Image
-                    src={require("@/assets/icons/checkbox.svg")}
-                    alt="unchecked"
-                    className="w-6 h-6 object-cover p-[1px]"
-                  />
-                )}
-              </div>
+              <CheckBox/>
               <ArrowDown2 variant="Bold" className="text-sec700" size={20} />
             </div>
 
@@ -109,11 +94,12 @@ const Quotation = () => {
           </div>
         </div>
 
-      <div className="w-full mx-auto mt-4 rounded border border-grey300">
+      <div className="w-full mx-auto mt-4 rounded border border-grey300 border-b-0">
         
-        <SalesTable />
+        <QuotationTable />
 
-        <div className="w-full bg-grey100 rounded-br rounded-bl border-t border-grey300 py-2 flex items-center justify-center gap-4">
+        {/* PAGINATION */}
+        {/* <div className="w-full bg-grey100 rounded-br rounded-bl border-t border-grey300 py-2 flex items-center justify-center gap-4">
           <div className="pagination">
             <ArrowLeft2 className="text-grey300" />
           </div>
@@ -121,7 +107,9 @@ const Quotation = () => {
           <div className="pagination">
             <ArrowRight2 />
           </div>
-        </div>
+        </div> */}
+
+
       </div>
     </div>
   );

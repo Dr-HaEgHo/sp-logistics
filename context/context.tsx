@@ -48,6 +48,11 @@ interface ContextProps {
   setInfoMsg: Dispatch<SetStateAction<string>>;
   layout: string;
   setLayout: Dispatch<SetStateAction<string>>;
+  openDoc: boolean;
+  setOpenDoc: Dispatch<SetStateAction<boolean>>;
+  openAction: boolean;
+  setOpenAction: Dispatch<SetStateAction<boolean>>;
+
 }
 
 // const initialState = {
@@ -82,7 +87,12 @@ export const GlobalContext = createContext<ContextProps>({
   infoMsg: '',
   setInfoMsg: () : string => '',
   layout: '',
-  setLayout: () : string => ''
+  setLayout: () : string => '',
+  openDoc: false,
+  setOpenDoc: () : boolean => false,
+  openAction: false,
+  setOpenAction: () : boolean => false,
+  
 });
 
 export const GlobalContextProvider = ({
@@ -106,6 +116,8 @@ export const GlobalContextProvider = ({
   const [ headerInfo, setHeaderInfo ] = useState<string>('')
   const [ appHeaderInfo, setAppHeaderInfo ] = useState<string>('')
   const [ layout, setLayout ] = useState<string>('')
+  const [ openDoc, setOpenDoc] = useState<boolean>(false)
+  const [ openAction, setOpenAction] = useState<boolean>(false)
 
   return (
     <GlobalContext.Provider
@@ -137,7 +149,11 @@ export const GlobalContextProvider = ({
         infoMsg,
         setInfoMsg,
         layout,
-        setLayout
+        setLayout,
+        openDoc, 
+        setOpenDoc,
+        openAction, 
+        setOpenAction
       }}
     >
       {children}

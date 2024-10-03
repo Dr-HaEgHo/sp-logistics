@@ -339,3 +339,15 @@ input:disabled{
 .nav-shadow{
   box-shadow:0px 1px 14px rgba(40, 91, 94, 0.35); 
 }
+
+/* QUIILL STYLES */
+
+.ql-toolbar{
+ border-top-left-radius: 4px;
+ border-top-right-radius: 4px;
+}
+.ql-editor{
+  background-color: white;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}

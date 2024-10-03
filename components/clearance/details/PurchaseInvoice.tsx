@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import SalesTable from "./SalesTable";
+import CheckBox from "@/components/CheckBox";
 
 const clients = [
   { id: 1, name: "Any Client" },
@@ -81,24 +82,7 @@ const PurchaseInvoice = () => {
       <div>
           <div className="flex items-center justify-start gap-4">
             <div className="flex items-center gap-2">
-              <div
-                className="cursor-pointer flex item-center justify-center"
-                onClick={() => setChecked(!checked)}
-              >
-                {checked ? (
-                  <Image
-                    src={require("@/assets/icons/check.svg")}
-                    alt="unchecked"
-                    className="w-6 h-6 object-cover"
-                  />
-                ) : (
-                  <Image
-                    src={require("@/assets/icons/checkbox.svg")}
-                    alt="unchecked"
-                    className="w-6 h-6 object-cover p-[1px]"
-                  />
-                )}
-              </div>
+              <CheckBox/>
               <ArrowDown2 variant="Bold" className="text-sec700" size={20} />
             </div>
 

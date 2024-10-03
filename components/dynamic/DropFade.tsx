@@ -46,7 +46,7 @@ const DropFade: FC<dropDownProps> = (props) => {
 
     return (
         <div className={`input-wrap ${props.iwClass}`} ref={dropDownRef}>
-            <label className='labels'>{props.label && props.label}</label>
+            {props.label && <label className='labels'>{props.label && props.label}</label>}
             <div className='password-input' >
                 <input onChange={handleChange} value={props.value} className={`input ${props.iClass}`} type={props?.type} placeholder={props.placeholder && props.placeholder} />
                 <div onClick={handleClick} className='absolute cursor-pointer right-[10px] top-1/2 transform -translate-y-1/2 flex items-center justify-center text-icons '>
