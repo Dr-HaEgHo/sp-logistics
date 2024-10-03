@@ -253,7 +253,7 @@ const Sidebar = () => {
                         // setActive(item.title);
                       }}
                       className={`transition duration-200 py-[9px] rounded-xl ${
-                        item.route === active || item.route2 === active && "bg-sec800"
+                        item.route === active || item.route2 === active ? "bg-sec800" : ''
                       } hover:bg-grey200`}
                     >
                       <a href={item?.route} className="flex items-center gap-[10px] pl-4">
