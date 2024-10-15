@@ -3,7 +3,7 @@ import React from 'react'
 
 export const metadata: Metadata = {
     title: 'SP Logistics | Transportation Management',
-    description: 'Learn and get better at industry trading secrets',
+    description: 'The Best Management and Tracking Logistics Software',
   }
 
 const Layout = ({children}: {children: React.ReactNode}) => {
