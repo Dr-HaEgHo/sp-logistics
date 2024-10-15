@@ -1,12 +1,15 @@
 import { dropDownProps } from '@/types'
 import { ArrowDown2, ArrowUp2 } from 'iconsax-react'
 import { FC, useEffect, useRef, useState } from 'react'
+import { SearchInputFade } from '../Input'
 
 
-const DropFade: FC<dropDownProps> = (props) => {
+
+const DropSearchFade: FC<dropDownProps> = (props) => {
 
     const [isOpen, setIsOpen] = useState<boolean>(false)
-    // const [value, setValue] = useState<string>('')
+    const [searchValue, setSearchValue] = useState<string>('');
+    const [ filteredArray, setFilteredArray ] = useState<any[]>(props?.data)
 
     const dropDownRef = useRef<HTMLParagraphElement>(null)
 
@@ -29,6 +32,20 @@ const DropFade: FC<dropDownProps> = (props) => {
         props?.setValue(name as string);
         setIsOpen(prev => prev = !prev);
     }
+
+    useEffect(() => {
+        if (!props.data) {
+          return;
+        }
+    
+        const newArray = props.data.filter((item) =>
+          item.name.toLowerCase().includes(searchValue.toLowerCase())
+        );
+    
+        setFilteredArray(newArray);
+    
+        console.log('the search', searchValue);
+      }, [searchValue, props.data]);
 
     useEffect(() => {
         if(isOpen) {
@@ -57,13 +74,22 @@ const DropFade: FC<dropDownProps> = (props) => {
 
 
                 <div style={{
-                    height: isOpen ? 150 : 0,
+                    height: isOpen ? 400 : 0,
                     borderWidth: isOpen ? 1 : 0,
-                }} className='transition duration-[1000ms] w-full rounded-md bg-white border-dark500 overflow-hidden absolute z-[999] top-[130%] slim-scroll' >
+                }} className='transition duration-[1000ms] w-full rounded-md bg-white border-grey300 overflow-hidden absolute z-[999] top-[130%] slim-scroll'>
+                    <div className='sticky top-0 bg-white border-b border-grey300 p-2'>
+                        <SearchInputFade
+                            type='text'
+                            value={searchValue}
+                            setValue={setSearchValue}
+                            placeholder=''
+                        />
+                    </div>
                     {
-                        props?.data.map((item:any, idx:number) => (
-                            <p key={idx} onClick={() => handleDropItem(item.name)} className='transition duration-200 cursor-pointer border-b border-dark500 p-[10px] text-black font-normal text-[11px] 2xl:text-xs hover:bg-sec700 hover:text-white active:bg-sec600' >{item.name}</p>
-                        ))
+                        filteredArray.length ? filteredArray.map((item:any, idx:number) => (
+                            <p key={idx} onClick={() => handleDropItem(item.name)} className='transition duration-200 cursor-pointer border-b border-grey100 p-[10px] text-black font-normal text-[11px] 2xl:text-xs hover:bg-sec700 hover:text-white active:bg-sec600' >{item.name}</p>
+                        )) : null
+                        
                     }
 
                     <div className='w-full h-[1rem]' />
@@ -73,5 +99,5 @@ const DropFade: FC<dropDownProps> = (props) => {
     )
 }
 
-export default DropFade;
 
+export default DropSearchFade;

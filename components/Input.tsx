@@ -1,5 +1,5 @@
 'use client'
-import { dropDownProps, emailInputPropsFade, prefixInputPropsFade, pwInputProps, searchInputProps } from '@/types'
+import { dropDownProps, emailInputPropsFade, plateInputPropsFade, prefixInputPropsFade, pwInputProps, searchInputProps } from '@/types'
 import { ArrowDown2, ArrowUp2, Eye, EyeSlash } from 'iconsax-react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -9,12 +9,36 @@ export const DropDownFade = dynamic(() => import('../components/dynamic/DropFade
     ssr : false,
  });
 
+ export const DropDownSearchFade = dynamic(() => import('../components/dynamic/DropSearchFade'), {
+    ssr : false,
+ });
+ export const MultipleDropDownSearchFade = dynamic(() => import('../components/dynamic/DropSearchMultiple'), {
+    ssr : false,
+ });
+
 
 export const InputFade: FC<emailInputPropsFade> = (props) => {
     return (
         <div className={`input-wrap ${props.iwClass}`} >
             { props.label && <label className={`labelsFade ${props.lClass}`}>{props.label && props.label}</label>}
             <input id={props.id} value={props.value} type={props?.type} onChange={props.handleChange} onBlur={props.blur} disabled={props?.isDisabled} className={`input ${props.iClass}`} placeholder={props.placeholder && props.placeholder} />
+            { props.error && <p className='text-error text-[10px] italic'>{props.error}</p>}
+        </div>
+    )
+}
+
+export const PlateInputFade: FC<plateInputPropsFade> = (props) => {
+    return (
+        <div className={`input-wrap ${props.iwClass}`} >
+            { props.label && <label className={`labelsFade ${props.lClass}`}>{props.label && props.label}</label>}
+            <div className='flex gap-3'>
+                <input id={props.id} value={props.value} type={props?.type} onChange={props.handleChange} onBlur={props.blur} disabled={props?.isDisabled} className={`input ${props.iClass}`} placeholder={props.placeholder && props.placeholder} />
+                <div className='flex items-center gap-3'>
+                    <input id={props.id} value={props.value1} type={props?.type} onChange={props.handleChange} onBlur={props.blur} disabled={props?.isDisabled} className={`input ${props.iClass}`} placeholder="Letters" />
+                    <input id={props.id} value={props.value2} type={props?.type} onChange={props.handleChange} onBlur={props.blur} disabled={props?.isDisabled} className={`input ${props.iClass}`} placeholder="Letters" />
+                    <input id={props.id} value={props.value3} type={props?.type} onChange={props.handleChange} onBlur={props.blur} disabled={props?.isDisabled} className={`input ${props.iClass}`} placeholder="Letters" />
+                </div>
+            </div>
             { props.error && <p className='text-error text-[10px] italic'>{props.error}</p>}
         </div>
     )
@@ -107,7 +131,41 @@ export const FileInputFade2: FC<pwInputProps> = (props) => {
                         alt='select window'
                     />
                     <div className='flex flex-[1] items-center justify-center gap-5'>
-                        <p className='text-sec700 text-sm font-medium'>Upload Documents</p>
+                        <p className='text-sec700 text-sm font-medium'>{props?.placeholder}</p>
+                        <Image 
+                            src={require('../assets/icons/upload-sec700.svg')}
+                            alt='select window'
+                        />
+                    </div>
+                </div>
+            </div>
+            { props.error && <p className='text-error text-[10px] italic'>{props.error}</p>}
+        </div>
+    )
+}
+
+export const FileInputFade3: FC<pwInputProps> = (props) => {
+
+    const [isOpen, setIsOpen] = useState(false)
+
+    const handleClick = () => {
+        setIsOpen(prev => prev = !prev)
+    }
+
+    return (
+        <div className='input-wrap' >
+            <label className={`labels ${props.lClass}`}>{props.label && props.label}</label>
+            <div className={`password-input`} >
+                <input id={props.id} className={`file-input cursor-pointer bg-white z-10 ${props.iClass}`}  type={props.type ? "file" : "file"} onChange={props.handleChange} onBlur={props.blur} disabled={props?.isDisabled} placeholder={props.placeholder && props.placeholder} />
+                <div onClick={props.cta} className='w-full absolute pointer-events-none border bg-white border-sec700 rounded hover:bg-bg3 active:bg-bg2 transition duration-200 h-10 right-0  top-1/2 transform -translate-y-1/2 flex items-center text-icons'>
+                    {
+                        !props.removeIcon ? (<Image 
+                            src={require('../assets/icons/upload-image-grey400.svg')}
+                            alt='select window'
+                        />) : null
+                    }
+                    <div className='flex flex-[1] items-center justify-center gap-5'>
+                        <p className='text-sec700 text-sm font-medium'>{props?.placeholder}</p>
                         <Image 
                             src={require('../assets/icons/upload-sec700.svg')}
                             alt='select window'
@@ -224,19 +282,23 @@ export const SearchInputFade: FC<searchInputProps> = (props) => {
         setIsOpen(prev => prev = !prev)
     }
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        props?.setValue(e.target.value)
+    }
+
     return (
         <div className='input-wrap' >
             <div className='password-input' >
-                <input className='inputsfade min-w-[260px] 2xl:min-w-[460px] ' type='text' placeholder={props.placeholder && props.placeholder} />
-                <div onClick={handleClick} className='absolute cursor-pointer right-[20px] top-1/2 transform -translate-y-1/2 flex items-center justify-center text-icons'>
+                <div onClick={handleClick} className='absolute cursor-pointer left-3 top-1/2 transform -translate-y-1/2 flex items-center justify-center text-icons'>
                     <div className='w-5 h-5' >
-                        {/* <Image 
-                            src={require('../assets/icons/search.png')}
+                        <Image 
+                            src={require('@/assets/icons/search.svg')}
                             alt='onebot.com'
                             className='w-full'
-                        /> */}
+                        />
                     </div>
                 </div>
+                <input onChange={handleChange} value={props?.value} className='w-full h-9 border border-grey300 py-[10px] pl-[42px] rounded min-w-[260px] text-[13px] font-normal text-grey900' type='text' placeholder={props.placeholder && props.placeholder} />
             </div>
         </div>
     )

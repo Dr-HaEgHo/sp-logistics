@@ -26,7 +26,7 @@ const Page = () => {
     } ,[])
 
     useEffect(() => {
-      setAppHeaderInfo('Customs  Clearance')
+      setAppHeaderInfo('Customs Clearance')
       setLayout('')
     }, [])
 

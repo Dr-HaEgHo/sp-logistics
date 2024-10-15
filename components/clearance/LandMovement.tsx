@@ -26,14 +26,13 @@ import Modal from "../Modal";
 import DeliveryTable from "../DeliveryTable";
 import DeliveryFilled from "../DeliveryFilled";
 import { DeliveryProps } from "@/types";
-import FileStatusTable from "../FileStatusTable";
 import DriverTable from "../DriverTable";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 const codes = [
   { id: 1, name: "Business" },
-  { id: 2, name: "Marketing Agency" },
+  { id: 2, name: "Marketing Agency" }, 
   { id: 3, name: "Solopreneur / Freelancer" },
   { id: 4, name: "Other" },
 ];

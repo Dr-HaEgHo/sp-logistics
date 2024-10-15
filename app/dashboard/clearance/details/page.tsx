@@ -91,7 +91,7 @@ const handleEditorChange = (newContent: string) => {
   return (
     <div className="w-full">
         <Modal isOpen={openDoc} setIsOpen={setOpenDoc}>
-        <div className="w-[840px] min-w-[840px] min-h-[400px] max-h-[900px] slim-scroll bg-white relative">
+        <div className="w-[840px] min-w-[840px] min-h-[400px] max-h-[90vh] slim-scroll bg-white relative">
           {/* HEader Bar */}
 
           <div className="px-10 pt-10 bg-white relative">
@@ -235,7 +235,7 @@ const handleEditorChange = (newContent: string) => {
         </Modal>
 
         <Modal isOpen={openAction} setIsOpen={setOpenAction}>
-        <div className="w-[840px] min-w-[840px] min-h-[400px] max-h-[900px] slim-scroll bg-white relative">
+        <div className="w-[840px] min-w-[840px] min-h-[400px] max-h-[90vh] slim-scroll bg-white relative">
           {/* HEader Bar */}
 
           <div className="px-10 pt-10 bg-white relative">
@@ -245,7 +245,6 @@ const handleEditorChange = (newContent: string) => {
                 Take Action
               </h4>
             </div>
-            {/* <FileStatusTable /> */}
           </div>
 
           <div className="px-10 pt-6 w-full grid grid-cols-2 gap-10">

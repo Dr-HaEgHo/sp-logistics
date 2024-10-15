@@ -64,8 +64,8 @@ const Sidebar = () => {
           title: "Transportation Management",
           icon: require("../assets/icons/trans-mgt.svg"),
           iconw: require("../assets/icons/trans-mgtw.svg"),
-          route: "/",
-          route2:"/",
+          route: "/dashboard/transportation",
+          route2:"/dashboard/transportation/details",
         },
         {
           id: 4,

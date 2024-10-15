@@ -54,7 +54,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     setLayout("custom");
-    setAppHeaderInfo("Customs Clearance");
+    setAppHeaderInfo("Transportation Management");
   }, []);
 
   return (

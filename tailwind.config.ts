@@ -15,6 +15,7 @@ const config: Config = {
         bg2: "#F1F8F6",
         bg2Hover:"#e0e6e4",
         primary: "#FF0000",
+        secDark1: "#0D4141",
         sec800: "#066769",
         sec700: "#008080",
         sec600: "#00A8A5",
@@ -23,6 +24,7 @@ const config: Config = {
         dark800: "#141313",
         dark700: "#262424",
         dark600: "#373434",
+        dark500: "#808080",
         grey1000: "#262626",
         grey900: "#333333",
         grey800: "#454545",
@@ -39,6 +41,10 @@ const config: Config = {
         noteGreen: "#008080",
         tableBorderGreen: "#D1E6E6",
         tableHeaderGreen: "#F1F8F6",
+
+
+        hover1:"#C4CECE",
+        hover2:"#D9D9D9",
 
 
         accept: "#30A149",
@@ -66,6 +72,15 @@ const config: Config = {
         disabledBorder: "#DFDDDD",
         deliInputBorder: "#B5B4B4",
         deliInputText: "#A4A3A3",
+
+
+        fsBlue: "#8DBFEF",
+        fsLilac: "#BCC1F1",
+        fsGreen: "#9CE8A2",
+        fsYellow: "#FFDC97",
+        fsGrey: "#D3D3D3",
+        fsRed: "#F6B0AB",
+
       },
 
     },

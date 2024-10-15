@@ -3,7 +3,6 @@ import { HambergerMenu, Menu, Notification } from "iconsax-react";
 import Image from "next/image";
 import { useParams, usePathname } from "next/navigation";
 import React, { useContext, useState } from "react";
-import { SearchInputFade } from "./Input";
 import { GlobalContext } from "@/context/context";
 // import { Activity } from "@untitled-ui/icons-react";
 

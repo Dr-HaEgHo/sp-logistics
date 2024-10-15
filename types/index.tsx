@@ -7,15 +7,15 @@ export interface emailInputProps {
   setValue: Function;
 }
 
-export interface socialType{
+export interface socialType {
   data: {
     id: number;
     text: string;
     to: string;
-    image: 'string';
+    image: "string";
     description: string;
     channel: string;
-  },
+  };
   btnClass?: string;
 }
 
@@ -36,13 +36,33 @@ export interface emailInputPropsFade {
   blur?: React.FocusEventHandler<HTMLInputElement> | undefined;
 }
 
+export interface plateInputPropsFade {
+  id?: string;
+  label?: string;
+  placeholder: string;
+  type: string;
+  setValue?: Function;
+  value?: any;
+  value1?: any;
+  value2?: any;
+  value3?: any;
+  error?: string | undefined;
+  isDisabled?: boolean;
+  lClass?: string;
+  iClass?: string;
+  iwClass?: string;
+  touched?: boolean | undefined;
+  handleChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
+  blur?: React.FocusEventHandler<HTMLInputElement> | undefined;
+}
+
 export interface prefixInputPropsFade {
   id?: string;
   label?: string;
   placeholder: string;
   placeholder2: string;
   type: string;
-  type2:string;
+  type2: string;
   setValue?: Function;
   setValue2?: Function;
   value?: any;
@@ -65,9 +85,10 @@ export interface pwInputProps {
   error?: string | undefined;
   cta?: () => void;
   isDisabled?: boolean;
+  removeIcon?: boolean;
   lClass?: string;
   iClass?: string;
-  type?:string;
+  type?: string;
   touched?: boolean | undefined;
   handleChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
   blur?: React.FocusEventHandler<HTMLInputElement> | undefined;
@@ -76,6 +97,7 @@ export interface pwInputProps {
 export interface searchInputProps {
   placeholder: string;
   type: string;
+  value: string;
   setValue: Function;
 }
 
@@ -92,6 +114,23 @@ export interface dropDownProps {
   iClass?: string;
   iwClass?: string;
 }
+
+export interface multipleDropDownProps {
+  label?: string;
+  placeholder: string;
+  type: string;
+  data: {
+    title: string;
+    list: {
+      id: number;
+      name: string;
+    }[];
+  }[];
+  value?: string;
+  setValue: Function;
+  iClass?: string;
+  iwClass?: string;
+};
 
 export interface dropDownPropsFade {
   label: string;
@@ -303,14 +342,13 @@ export interface chatDetailsData {
 }
 
 export interface button {
-  cta?:() => void;
+  cta?: () => void;
   text?: string;
   pClass?: string;
   btnClass?: string;
-  image?:string;
+  image?: string;
   children?: React.ReactNode;
 }
-
 
 export interface DeliveryProps {
   acctNo: string;
