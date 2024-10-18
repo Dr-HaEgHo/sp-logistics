@@ -321,6 +321,9 @@ input:disabled{
   animation: lineGrow 3s ease-in-out;
 }
 
+.spin{
+  animation: spinner .3s infinite linear;
+}
 
 @keyframes lineGrow {
   from {
@@ -329,6 +332,16 @@ input:disabled{
 
   to {
     width: 100%;
+  }
+}
+
+@keyframes spinner {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(359deg)
   }
 }
 
@@ -355,3 +368,4 @@ input:disabled{
 .top6px{
   top: calc(100% + 6px)
 }
+

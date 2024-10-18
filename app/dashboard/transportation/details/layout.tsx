@@ -4,8 +4,6 @@ import { GlobalContext } from "@/context/context";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
 
-
-
 const buttons2 = [
   { id: 1, name: "Details", icon: "" },
   { id: 2, name: "Sales Invoices", count: "3250", icon: "" },
@@ -27,7 +25,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     setOpenDoc,
     openAction,
     setOpenAction,
-  } = useContext(GlobalContext);
+  } = useContext(GlobalContext); 
 
   const search = useSearchParams();
   const tab = new URLSearchParams(search).get("tab");

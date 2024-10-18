@@ -104,7 +104,7 @@ export const documentType = [
   
   export const statuses = [
     {
-      title: "",
+      title: "Any Case",
       list: [
         { id: 1, name: "Lorem Ipsum1" },
         { id: 2, name: "Lorem Ipsum2" },
@@ -114,27 +114,27 @@ export const documentType = [
         { id: 6, name: "Lorem Ipsum6" },
       ],
     },
-    // {
-    //   title: "",
-    //   list: [
-    //     { id: 1, name: "Lorem Ipsum1" },
-    //     { id: 2, name: "Lorem Ipsum2" },
-    //     { id: 3, name: "Lorem Ipsum3" },
-    //     { id: 4, name: "Lorem Ipsum4" },
-    //     { id: 5, name: "Lorem Ipsum5" },
-    //     { id: 6, name: "Lorem Ipsum6" },
-    //   ],
-    // },
-    // {
-    //   title: "",
-    //   list: [
-    //     { id: 1, name: "Lorem Ipsum1" },
-    //     { id: 2, name: "Lorem Ipsum2" },
-    //     { id: 3, name: "Lorem Ipsum3" },
-    //     { id: 4, name: "Lorem Ipsum4" },
-    //     { id: 5, name: "Lorem Ipsum5" },
-    //     { id: 6, name: "Lorem Ipsum6" },
-    //   ],
-    // },
+    {
+      title: "Open",
+      list: [
+        { id: 7, name: "Lorem Ipsum7" },
+        { id: 8, name: "Lorem Ipsum8" },
+        { id: 9, name: "Lorem Ipsum9" },
+        { id: 10, name: "Lorem Ipsum10" },
+        { id: 11, name: "Lorem Ipsum11" },
+        { id: 12, name: "Lorem Ipsum12" },
+      ],
+    },
+    {
+      title: "Closed",
+      list: [
+        { id: 13, name: "Lorem Ipsum13" },
+        { id: 14, name: "Lorem Ipsum14" },
+        { id: 15, name: "Lorem Ipsum15" },
+        { id: 16, name: "Lorem Ipsum16" },
+        { id: 16, name: "Lorem Ipsum17" },
+        { id: 17, name: "Lorem Ipsum18" },
+      ],
+    },
   ];
   

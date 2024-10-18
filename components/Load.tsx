@@ -81,3 +81,10 @@ export const LoadSmallButton = () => {
     </main>
   );
 };
+
+
+export const SpinLoader = () => {
+  return (
+    <div className="w-full aspect-square rounded-full border-l-[1px] border-t-[1px] border-b-[1px] border-dismissLight spin"></div>
+  )
+}

@@ -123,7 +123,7 @@ const Page = () => {
         {
           dir === 'create-new' && <CreateNew/>
         }
-
+ 
       </div>
     </main>
   );

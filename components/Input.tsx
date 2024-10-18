@@ -12,7 +12,12 @@ export const DropDownFade = dynamic(() => import('../components/dynamic/DropFade
  export const DropDownSearchFade = dynamic(() => import('../components/dynamic/DropSearchFade'), {
     ssr : false,
  });
+ 
  export const MultipleDropDownSearchFade = dynamic(() => import('../components/dynamic/DropSearchMultiple'), {
+    ssr : false,
+ });
+
+ export const MiniDropDownSearchFade = dynamic(() => import('../components/dynamic/DropdownMini'), {
     ssr : false,
  });
 
@@ -287,7 +292,7 @@ export const SearchInputFade: FC<searchInputProps> = (props) => {
     }
 
     return (
-        <div className='input-wrap' >
+        <div className='input-wrap z-[9999]'>
             <div className='password-input' >
                 <div onClick={handleClick} className='absolute cursor-pointer left-3 top-1/2 transform -translate-y-1/2 flex items-center justify-center text-icons'>
                     <div className='w-5 h-5' >
@@ -298,7 +303,7 @@ export const SearchInputFade: FC<searchInputProps> = (props) => {
                         />
                     </div>
                 </div>
-                <input onChange={handleChange} value={props?.value} className='w-full h-9 border border-grey300 py-[10px] pl-[42px] rounded min-w-[260px] text-[13px] font-normal text-grey900' type='text' placeholder={props.placeholder && props.placeholder} />
+                <input onChange={handleChange} value={props?.value} className='w-full h-9 border border-grey300 py-[10px] pl-[42px] rounded min-w-[260px] text-[13px] font-normal text-grey900 z-[999]' type='text' placeholder={props.placeholder && props.placeholder} />
             </div>
         </div>
     )

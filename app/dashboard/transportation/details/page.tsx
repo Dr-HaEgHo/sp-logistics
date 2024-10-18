@@ -14,6 +14,7 @@ import {
   DropDownSearchFade,
   FileInputFade,
   FileInputFade2,
+  MiniDropDownSearchFade,
   MultipleDropDownSearchFade,
   PreviewFileInputFade,
   TextArea,
@@ -133,7 +134,7 @@ const Page = () => {
                 Change Container Status
               </h4>
               <div className="w-full grid grid-cols-2 gap-10">
-                <MultipleDropDownSearchFade
+                <MiniDropDownSearchFade
                   type="text"
                   label="Status"
                   placeholder="Change Status"

@@ -77,7 +77,7 @@ const DropSearchFade: FC<dropDownProps> = (props) => {
                     height: isOpen ? 400 : 0,
                     borderWidth: isOpen ? 1 : 0,
                 }} className='transition duration-[1000ms] w-full rounded-md bg-white border-grey300 overflow-hidden absolute z-[999] top-[130%] slim-scroll'>
-                    <div className='sticky top-0 bg-white border-b border-grey300 p-2'>
+                    <div className='sticky top-0 bg-white border-b border-grey300 p-2 z-10'>
                         <SearchInputFade
                             type='text'
                             value={searchValue}
