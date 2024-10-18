@@ -341,7 +341,7 @@ const CreateNew = () => {
 
             {consignee !== null ? (
               <DeliveryFilled
-                label="Delivery to"
+                label="Consignee"
                 data={consignee}
                 setData={setConsignee}
               />
@@ -349,7 +349,7 @@ const CreateNew = () => {
               <FileInputFade
                 id="select customer"
                 placeholder="Select from CustomerFile"
-                label="Delivery to"
+                label="Consignee"
                 value=""
                 cta={() => {
                   setConsigneeOpen(!consigneeOpen);
@@ -359,7 +359,7 @@ const CreateNew = () => {
 
             {shipperOne !== null ? (
               <DeliveryFilled
-                label="Delivery to"
+                label="Shipper"
                 data={shipperOne}
                 setData={setShipperOne}
               />
@@ -367,7 +367,7 @@ const CreateNew = () => {
               <FileInputFade
                 id="select customer"
                 placeholder="Select from CustomerFile"
-                label="Delivery to"
+                label="Shipper"
                 value=""
                 cta={() => {
                   setShipperOneOpen(!shipperOneOpen);
@@ -413,7 +413,7 @@ const CreateNew = () => {
 
             {consigneeTwo !== null ? (
               <DeliveryFilled
-                label="Delivery to"
+                label="Consignee"
                 data={consigneeTwo}
                 setData={setConsigneeTwo}
               />
@@ -421,7 +421,7 @@ const CreateNew = () => {
               <FileInputFade
                 id="select customer"
                 placeholder="Select from CustomerFile"
-                label="Delivery to"
+                label="Consignee"
                 value=""
                 cta={() => {
                   setConsigneeOpen(!consigneeOpen);
@@ -431,7 +431,7 @@ const CreateNew = () => {
 
             {shipperTwo !== null ? (
               <DeliveryFilled
-                label="Delivery to"
+                label="Shipper"
                 data={shipperTwo}
                 setData={setShipperTwo}
               />
@@ -439,7 +439,7 @@ const CreateNew = () => {
               <FileInputFade
                 id="select customer"
                 placeholder="Select from CustomerFile"
-                label="Delivery to"
+                label="Shipper"
                 value=""
                 cta={() => {
                   setShipperTwoOpen(!shipperTwoOpen);
