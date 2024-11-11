@@ -1,22 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FlieActionTable from "../FileActionTable";
 import { FilledButton } from "../Button";
 import { DropDownFade, InputFade, PrefixInput } from "../Input";
 import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import TransportCard from "./TransportCard";
-import { cardData, contCodes, cust, qTabs } from "@/data";
+import { cardDataWarehouse as cardData, contCodes, cust, qTabs } from "@/data";
+import WarehouseCard from "./WarehouseCard";
 
-
-
-
-const TransportationOrders = () => {
+const Warehouse = () => {
   const [customer, setCustomer] = useState<string>("");
-  const [ContainerNo, setContainerNo] = useState<string>("");
+  const [status, setStatus] = useState<string>("");
+  const [branch, setBranch] = useState<string>("");
 
   const router = useRouter();
   const search = useSearchParams();
   const qTab = new URLSearchParams(search).get("tab");
+
+  useEffect(() => {
+    if (qTab) { 
+      return;
+    }
+
+    router.push("?dir=warehouse&tab=1");
+  }, []);
 
   return (
     <div className="w-full">
@@ -47,42 +53,48 @@ const TransportationOrders = () => {
               placeholder="Prefix"
               placeholder2="Enter Number"
             />
-            <InputFade
-              type="number"
-              placeholder="Enter Number"
-              label="Customer Reference Number"
+            <DropDownFade
+              type="text"
+              value={status}
+              setValue={setStatus}
+              label="Status"
+              placeholder="Select"
+              data={cust}
             />
           </div>
 
-          <div className="w-full flex items-center justify-end gap-[26px]">
-            <FilledButton
-              text="Advanced Search"
-              image={require("../../assets/icons/filter-red.svg")}
-              btnClass="!flex-row-reverse !w-fit"
-              pClass="text-primary text-sm"
+          <div className="w-full flex items-center gap-[26px]">
+            <InputFade
+              label="Customer Reference Number"
+              type="number"
+              placeholder="Enter Number"
             />
 
-            <FilledButton
-              text="Clear"
-              btnClass="!flex-row-reverse !w-fit"
-              pClass="text-dark1000 text-sm"
-            />
+            <div className="w-full flex items-end justify-end gap-[26px]">
+              <InputFade
+                label="Locations"
+                type="number"
+                placeholder="Enter Number"
+              />
+              <FilledButton
+                text="Scan"
+                btnClass="!flex-row-reverse !w-fit"
+                pClass="text-sec700 text-sm font-medium"
+              />
+            </div>
           </div>
 
           <div className="w-full flex items-center gap-[26px]">
             <DropDownFade
               type="text"
-              value={customer}
-              setValue={setCustomer}
-              label="Container Number"
+              value={branch}
+              setValue={setBranch}
+              label="Branch"
               placeholder="Container Number"
               data={contCodes}
             />
-            <InputFade
-              type="number"
-              placeholder="Enter Number"
-              label="BAYAN No"
-            />
+            <div className="w-full"/>
+           
           </div>
 
           <div className="w-full flex justify-end mt-1 ">
@@ -103,26 +115,28 @@ const TransportationOrders = () => {
               <li key={idx}>
                 <FilledButton
                   cta={() => {
-                    router.push(`?dir=transportation-orders&tab=${tab.id}`)
+                    router.push(`?dir=warehouse&tab=${tab.id}`);
                   }}
                   text={tab.Title}
-                  btnClass={`bg-bg2 border-sec600 rounded !py-[13px] px-4 ${ tab.id.toString() === qTab && 'border'}`}
-                  pClass={`text-sm  dfgdf ${ tab?.id.toString() === qTab ? '!text-secDark1 !font-semibold' : '!text-dark900 !font-normal'}`}
+                  btnClass={`bg-bg2 border-sec600 rounded !py-[13px] px-4 ${
+                    tab.id.toString() === qTab && "border"
+                  }`}
+                  pClass={`text-sm  dfgdf ${
+                    tab?.id.toString() === qTab
+                      ? "!text-secDark1 !font-semibold"
+                      : "!text-dark900 !font-normal"
+                  }`}
                 />
               </li>
             ))}
         </ul>
       </div>
 
-     <div className="w-full grid grid-cols-2 gap-4 py-[44px]">
-            {
-              cardData && cardData.map((item) => (
-                <TransportCard data={item} />
-              ))
-            }
-     </div>
+      <div className="w-full grid grid-cols-2 gap-4 py-[44px]">
+        {cardData && cardData.map((item) => <WarehouseCard data={item} />)}
+      </div>
     </div>
   );
 };
 
-export default TransportationOrders;
+export default Warehouse;

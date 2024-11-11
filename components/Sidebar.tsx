@@ -56,8 +56,8 @@ const Sidebar = () => {
           title: "Warehouse Management",
           icon: require("../assets/icons/warehouse.svg"),
           iconw: require("../assets/icons/warehousew.svg"),
-          route: "/",
-          route2:"/",
+          route: "/dashboard/warehouse",
+          route2:"/dashboard/warehouse/details",
         },
         {
           id: 3,

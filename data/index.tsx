@@ -61,6 +61,61 @@ export const cardData = [
   },
 ];
 
+export const cardDataWarehouse = [
+  {
+    id: 1,
+    customerName: "Tzkar Creative",
+    cRefNo: "",
+    fileRef: "",
+    billOfLadingNo: "",
+    branch: "",
+    gateNo: "",
+    periodIn: "",
+    noOfPackages: "",
+    fileStatus: "",
+    barcode:""
+  },
+  {
+    id: 2,
+    customerName: "Tzkar Creative",
+    cRefNo: "1234",
+    fileRef: "SAP JF 1234",
+    billOfLadingNo: "123-45678990",
+    branch:"Distribution Center",
+    gateNo: "14",
+    periodIn: "21/09/2024 17:05",
+    noOfPackages: "5",
+    fileStatus: "Under Process",
+    barcode:""
+  },
+  {
+    id: 3,
+    customerName: "Tzkar Creative",
+    cRefNo: "1234",
+    fileRef: "SAP JF 1234",
+    billOfLadingNo: "123-45678990",
+    branch:"Distribution Center",
+    gateNo: "14",
+    periodIn: "21/09/2024 17:05",
+    noOfPackages: "5",
+    fileStatus: "Under Process",
+    barcode:""
+  },
+  {
+    id: 4,
+    customerName: "Tzkar Creative",
+    cRefNo: "1234",
+    fileRef: "SAP JF 1234",
+    billOfLadingNo: "123-45678990",
+    branch:"Distribution Center",
+    gateNo: "14",
+    periodIn: "21/09/2024 17:05",
+    noOfPackages: "5",
+    fileStatus: "Under Process",
+    barcode:""
+  },
+];
+
 export const truckTypes = [
   { id: 1, name: "16 - wheeler" },
   { id: 2, name: "18 - wheeler" },
@@ -138,3 +193,53 @@ export const documentType = [
     },
   ];
   
+
+  export const cust = [
+    { id: 1, name: "Local" },
+    { id: 2, name: "Foreign" },
+  ];
+  
+  export const mvTypes = [
+    { id: 1, name: "Air Movement" },
+    { id: 2, name: "Ocean Movement" },
+    { id: 2, name: "Land Movement" },
+  ];
+  
+  export const tabs = [
+    { id: 1, count: "", title: "Air Movement" },
+    { id: 2, count: "", title: "Ocean Movement" },
+    { id: 2, count: "", title: "Land Movement" },
+  ];
+  
+  export const qTabs = [
+    { id: 1, Title: "Pick-up date in the future", param: "" },
+    { id: 2, Title: "Pick-up In progress", param: "" },
+    { id: 3, Title: "On the way to deliver", param: "" },
+    { id: 4, Title: "Delivered & CNTR Return In Progress", param: "" },
+    { id: 5, Title: "Delivered", param: "" },
+    { id: 6, Title: "Closed", param: "" },
+    { id: 7, Title: "Hold", param: "" },
+    
+  ];
+
+  export const warehouseTabs = [
+    { id: 1, Title: "Discharging In progress", param: "" },
+    { id: 2, Title: "In Warehouse", param: "" },
+    { id: 3, Title: "Loading In Progress", param: "" },
+    { id: 4, Title: "Delivered", param: "" },
+    { id: 5, Title: "Closed", param: "" },
+  ];
+  
+  export const contCodes = [
+    { id: 1, name: "XT-PPRD-456" },
+    { id: 2, name: "XT-PPRD-457" },
+    { id: 3, name: "XT-PPRD-458" },
+    { id: 4, name: "XT-PPRD-459" },
+  ];
+
+  export const locationsTableData = [
+    { id: 1, location: "Zone A", fileRef: "FR12345", branch: "Main", barcode:"", status: "Active"},
+    { id: 2, location: "Zone B", fileRef: "FR12345", branch: "Secondary", barcode:"", status: "Active"},
+    { id: 3, location: "Zone C", fileRef: "FR12345", branch: "Main", barcode:"", status: "Active"},
+    { id: 4, location: "Zone D", fileRef: "", branch: "Main", barcode:"", status: "Inactive"}
+  ]

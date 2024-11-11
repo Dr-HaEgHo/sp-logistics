@@ -14,10 +14,9 @@ import React, {
 //     isActive: boolean
 // }
 interface messageType {
-    message: string;
-    chat_id: string;
+  message: string;
+  chat_id: string;
 }
-
 
 interface ContextProps {
   isActive: string;
@@ -39,10 +38,10 @@ interface ContextProps {
   messages: messagesData[] | null;
   setMessages: Dispatch<SetStateAction<messagesData[] | null>>;
   chatId: string;
-  setChatId : Dispatch<SetStateAction<string>>;
-  appHeaderInfo : string;
+  setChatId: Dispatch<SetStateAction<string>>;
+  appHeaderInfo: string;
   setAppHeaderInfo: Dispatch<SetStateAction<string>>;
-  headerInfo : string;
+  headerInfo: string;
   setHeaderInfo: Dispatch<SetStateAction<string>>;
   infoMsg: string;
   setInfoMsg: Dispatch<SetStateAction<string>>;
@@ -52,7 +51,10 @@ interface ContextProps {
   setOpenDoc: Dispatch<SetStateAction<boolean>>;
   openAction: boolean;
   setOpenAction: Dispatch<SetStateAction<boolean>>;
-
+  openReceipt: boolean;
+  setOpenReceipt: Dispatch<SetStateAction<boolean>>;
+  openDeliveryProof: boolean;
+  setOpenDeliveryProof: Dispatch<SetStateAction<boolean>>;
 }
 
 // const initialState = {
@@ -60,8 +62,8 @@ interface ContextProps {
 // };
 
 export const GlobalContext = createContext<ContextProps>({
-  isActive: '',
-  setIsActive: (): string => '',
+  isActive: "",
+  setIsActive: (): string => "",
   isSidebarOpen: false,
   setIsSidebarOpen: (): boolean => false,
   mainSidebarOpen: false,
@@ -75,24 +77,27 @@ export const GlobalContext = createContext<ContextProps>({
   openChatNav: false,
   setOpenChatNav: (): boolean => false,
   message: "",
-  setMessage: () : string => '',
+  setMessage: (): string => "",
   messages: null,
-  setMessages: () : messagesData[] | null => null,
-  chatId: '',
-  setChatId : () :string => '',
-  appHeaderInfo: '',
-  setAppHeaderInfo: () : string => '',
-  headerInfo: '',
-  setHeaderInfo: () : string => '',
-  infoMsg: '',
-  setInfoMsg: () : string => '',
-  layout: '',
-  setLayout: () : string => '',
+  setMessages: (): messagesData[] | null => null,
+  chatId: "",
+  setChatId: (): string => "",
+  appHeaderInfo: "",
+  setAppHeaderInfo: (): string => "",
+  headerInfo: "",
+  setHeaderInfo: (): string => "",
+  infoMsg: "",
+  setInfoMsg: (): string => "",
+  layout: "",
+  setLayout: (): string => "",
   openDoc: false,
-  setOpenDoc: () : boolean => false,
+  setOpenDoc: (): boolean => false,
   openAction: false,
-  setOpenAction: () : boolean => false,
-  
+  setOpenAction: (): boolean => false,
+  openReceipt: false,
+  setOpenReceipt: (): boolean => false,
+  openDeliveryProof: false,
+  setOpenDeliveryProof: (): boolean => false,
 });
 
 export const GlobalContextProvider = ({
@@ -100,7 +105,7 @@ export const GlobalContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [isActive, setIsActive] = useState<string>('');
+  const [isActive, setIsActive] = useState<string>("");
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [currentCourse, setCurrentCourse] = useState<onboardingCourses | null>(
     null
@@ -111,13 +116,15 @@ export const GlobalContextProvider = ({
   const [openChatNav, setOpenChatNav] = useState<boolean>(false);
   const [messages, setMessages] = useState<messagesData[] | null>(null);
   const [message, setMessage] = useState<string>("");
-  const [ chatId, setChatId ] = useState<string>('')
-  const [ infoMsg, setInfoMsg ] = useState<string>('')
-  const [ headerInfo, setHeaderInfo ] = useState<string>('')
-  const [ appHeaderInfo, setAppHeaderInfo ] = useState<string>('')
-  const [ layout, setLayout ] = useState<string>('')
-  const [ openDoc, setOpenDoc] = useState<boolean>(false)
-  const [ openAction, setOpenAction] = useState<boolean>(false)
+  const [chatId, setChatId] = useState<string>("");
+  const [infoMsg, setInfoMsg] = useState<string>("");
+  const [headerInfo, setHeaderInfo] = useState<string>("");
+  const [appHeaderInfo, setAppHeaderInfo] = useState<string>("");
+  const [layout, setLayout] = useState<string>("");
+  const [openDoc, setOpenDoc] = useState<boolean>(false);
+  const [openAction, setOpenAction] = useState<boolean>(false);
+  const [openReceipt, setOpenReceipt] = useState<boolean>(false);
+  const [openDeliveryProof, setOpenDeliveryProof] = useState<boolean>(false);
 
   return (
     <GlobalContext.Provider
@@ -136,24 +143,28 @@ export const GlobalContextProvider = ({
         setMainSidebarOpen,
         openChatNav,
         setOpenChatNav,
-        message, 
+        message,
         setMessage,
         messages,
         setMessages,
         chatId,
         setChatId,
-        headerInfo, 
+        headerInfo,
         setHeaderInfo,
-        appHeaderInfo, 
+        appHeaderInfo,
         setAppHeaderInfo,
         infoMsg,
         setInfoMsg,
         layout,
         setLayout,
-        openDoc, 
+        openDoc,
         setOpenDoc,
-        openAction, 
-        setOpenAction
+        openAction,
+        setOpenAction,
+        openReceipt,
+        setOpenReceipt,
+        openDeliveryProof,
+        setOpenDeliveryProof,
       }}
     >
       {children}

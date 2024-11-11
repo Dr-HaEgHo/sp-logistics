@@ -12,6 +12,10 @@ export const DropDownFade = dynamic(() => import('../components/dynamic/DropFade
  export const DropDownSearchFade = dynamic(() => import('../components/dynamic/DropSearchFade'), {
     ssr : false,
  });
+
+ export const DropDownSearchFade2 = dynamic(() => import('../components/dynamic/DropSearchFade2'), {
+    ssr : false,
+ });
  
  export const MultipleDropDownSearchFade = dynamic(() => import('../components/dynamic/DropSearchMultiple'), {
     ssr : false,
@@ -270,6 +274,31 @@ export const DateInputFade: FC<pwInputProps> = (props) => {
                 <div onClick={props.cta} className='absolute cursor-pointer rounded-tr rounded-br pointer-events-none bg-white hover:bg-grey100 active:bg-bg2 transition duration-200 h-8 w-12 right-2  top-1/2 transform -translate-y-1/2 flex items-center justify-center text-icons'>
                     <Image 
                         src={require('../assets/icons/Calendar.svg')}
+                        alt='select window'
+                    />
+                </div>
+            </div>
+            { props.error && <p className='text-error text-[10px] italic'>{props.error}</p>}
+        </div>
+    )
+}
+
+export const TimeInputFade: FC<pwInputProps> = (props) => {
+
+    const [isOpen, setIsOpen] = useState(false)
+
+    const handleClick = () => {
+        setIsOpen(prev => prev = !prev)
+    }
+
+    return (
+        <div className='input-wrap' >
+            <label className={`labels ${props.lClass}`}>{props.label && props.label}</label>
+            <div className={`password-input`} >
+                <input id={props.id} className={`file-input cursor-pointer z-10 ${props.iClass}`} value={props.value} type={'time'} onChange={props.handleChange} onBlur={props.blur} disabled={props?.isDisabled} placeholder={props.placeholder && props.placeholder} />
+                <div onClick={props.cta} className='absolute cursor-pointer rounded-tr rounded-br pointer-events-none bg-white hover:bg-grey100 active:bg-bg2 transition duration-200 h-8 w-12 right-2  top-1/2 transform -translate-y-1/2 flex items-center justify-center text-icons'>
+                    <Image 
+                        src={require('../assets/icons/Clock.svg')}
                         alt='select window'
                     />
                 </div>
