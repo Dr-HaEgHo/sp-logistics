@@ -4,10 +4,12 @@ import { FilledButton } from "../Button";
 import { DropDownFade, InputFade, PrefixInput } from "../Input";
 import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { cardDataWarehouse as cardData, contCodes, cust, warehouseTabs as qTabs } from "@/data";
-import WarehouseCard from "./WarehouseCard";
+import { cardDataContainer as cardData, contCodes, cust, containerTabs as qTabs } from "@/data";
+import WarehouseCard from "../warehouse/WarehouseCard";
+import ContainerCard from "./ContainerCard";
 
-const Warehouse = () => {
+
+const ContainerYard = () => {
   const [customer, setCustomer] = useState<string>("");
   const [status, setStatus] = useState<string>("");
   const [branch, setBranch] = useState<string>("");
@@ -70,18 +72,35 @@ const Warehouse = () => {
               placeholder="Enter Number"
             />
 
-            <div className="w-full flex items-end justify-end gap-[26px]">
+            <div className="w-full flex items-end justify-end gap-[20px]">
               <InputFade
                 label="Locations"
                 type="number"
-                placeholder="Enter Number"
+                placeholder="Letters"
               />
-              <FilledButton
-                text="Scan"
-                btnClass="!flex-row-reverse !w-fit"
-                pClass="text-sec700 text-sm font-medium"
+              <InputFade
+                label=""
+                type="text"
+                placeholder="Numbers"
               />
+              
             </div>
+
+            
+          </div>
+          <div className="w-full flex items-center justify-end gap-[26px]">
+            <FilledButton
+              text="Advanced Search"
+              image={require("../../assets/icons/filter-red.svg")}
+              btnClass="!flex-row-reverse !w-fit"
+              pClass="text-primary text-sm"
+            />
+
+            <FilledButton
+              text="Clear"
+              btnClass="!flex-row-reverse !w-fit"
+              pClass="text-dark1000 text-sm"
+            />
           </div>
 
           <div className="w-full flex items-center gap-[26px]">
@@ -90,7 +109,7 @@ const Warehouse = () => {
               value={branch}
               setValue={setBranch}
               label="Branch"
-              placeholder="Container Number"
+              placeholder="Select"
               data={contCodes}
             />
             <div className="w-full"/>
@@ -106,6 +125,8 @@ const Warehouse = () => {
           </div>
         </form>
       </div>
+
+           
 
       {/* TAB SWITCHES */}
       <div className="w-full">
@@ -133,10 +154,10 @@ const Warehouse = () => {
       </div>
 
       <div className="w-full grid grid-cols-2 gap-4 py-[44px]">
-        {cardData && cardData.map((item) => <WarehouseCard data={item} />)}
+        {cardData && cardData.map((item) => <ContainerCard data={item} />)}
       </div>
     </div>
   );
 };
 
-export default Warehouse;
+export default ContainerYard;

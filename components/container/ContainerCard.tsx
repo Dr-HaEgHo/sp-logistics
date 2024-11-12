@@ -13,9 +13,9 @@ interface TransportCardProps {
     branch?: string;
     gateNo: string;
     periodIn: string;
-    noOfPackages: string;
     fileStatus: string;
-    barcode?: string
+    barcode?: string;
+    containerType: string; 
   };
 }
 
@@ -32,7 +32,7 @@ interface TransportCardProps {
 //     periodIn,
 //     noOfPackages,
 
-const WarehouseCard: FC<TransportCardProps> = ({
+const ContainerCard: FC<TransportCardProps> = ({
   data: {
     id,
     customerName,
@@ -42,8 +42,8 @@ const WarehouseCard: FC<TransportCardProps> = ({
     branch,
     gateNo,
     periodIn,
-    noOfPackages,
     fileStatus,
+    containerType
   },
 }) => {
   const search = useSearchParams();
@@ -65,21 +65,17 @@ const WarehouseCard: FC<TransportCardProps> = ({
 
         <div className="flex flex-[1] flex-col gap-4">
             <p className="text-lg font-normal text-black">{ billOfLadingNo || 'Bill of Lading NO.'}</p>
-            { branch && <p className="text-lg font-normal text-black">{ branch || 'Branch'}</p>}
         </div>
       </div>
 
 
       <div className="w-full flex items-center gap-2">
         <div className="rounded bg-hover2 flex flex-[1] items-center justify-center">
-          <p className="text-black text-sm font-medium">{ gateNo || 'Gate No'}</p>
-        </div>
-        <div className="rounded bg-hover2 flex flex-[1] items-center justify-center">
           <p className="text-black text-sm font-medium">{ periodIn || 'Date&Time in'}</p>
         </div>
         <div className="rounded bg-hover2 flex flex-[1] items-center justify-center">
           <p className="text-black text-sm font-medium">
-            { noOfPackages || 'NO of Packages'}
+            { containerType || 'Container Type'}
           </p>
         </div>
       </div>
@@ -115,4 +111,4 @@ const WarehouseCard: FC<TransportCardProps> = ({
   );
 };
 
-export default WarehouseCard;
+export default ContainerCard;

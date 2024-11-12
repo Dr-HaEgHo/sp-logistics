@@ -72,8 +72,8 @@ const Sidebar = () => {
           title: "Container Yard",
           icon: require("../assets/icons/container-yard.svg"),
           iconw: require("../assets/icons/container-yardw.svg"),
-          route: "/",
-          route2:"/",
+          route: "/dashboard/container-yard",
+          route2:"/dashboard/container-yard/details",
         },
         {
           id: 5,

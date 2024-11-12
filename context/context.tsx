@@ -55,6 +55,8 @@ interface ContextProps {
   setOpenReceipt: Dispatch<SetStateAction<boolean>>;
   openDeliveryProof: boolean;
   setOpenDeliveryProof: Dispatch<SetStateAction<boolean>>;
+  barcodeContainer: boolean;
+  setBarcodeContainer: Dispatch<SetStateAction<boolean>>;
 }
 
 // const initialState = {
@@ -98,6 +100,9 @@ export const GlobalContext = createContext<ContextProps>({
   setOpenReceipt: (): boolean => false,
   openDeliveryProof: false,
   setOpenDeliveryProof: (): boolean => false,
+  barcodeContainer: false,
+  setBarcodeContainer: (): boolean => false,
+
 });
 
 export const GlobalContextProvider = ({
@@ -125,6 +130,7 @@ export const GlobalContextProvider = ({
   const [openAction, setOpenAction] = useState<boolean>(false);
   const [openReceipt, setOpenReceipt] = useState<boolean>(false);
   const [openDeliveryProof, setOpenDeliveryProof] = useState<boolean>(false);
+  const [ barcodeContainer, setBarcodeContainer ] = useState<boolean>(false)
 
   return (
     <GlobalContext.Provider
@@ -165,6 +171,8 @@ export const GlobalContextProvider = ({
         setOpenReceipt,
         openDeliveryProof,
         setOpenDeliveryProof,
+        barcodeContainer,
+        setBarcodeContainer
       }}
     >
       {children}

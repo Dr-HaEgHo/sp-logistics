@@ -116,6 +116,57 @@ export const cardDataWarehouse = [
   },
 ];
 
+export const cardDataContainer = [
+  {
+    id: 1,
+    customerName: "Tzkar Creative",
+    cRefNo: "",
+    fileRef: "",
+    billOfLadingNo: "",
+    gateNo: "",
+    periodIn: "",
+    containerType: "Container Type",
+    fileStatus: "",
+    barcode:""
+  },
+  {
+    id: 2,
+    customerName: "Tzkar Creative",
+    cRefNo: "1234",
+    fileRef: "SAP JF 1234",
+    billOfLadingNo: "123-45678990",
+    gateNo: "14",
+    periodIn: "21/09/2024 17:05",
+    containerType: "Container Type",
+    fileStatus: "Under Process",
+    barcode:""
+  },
+  {
+    id: 3,
+    customerName: "Tzkar Creative",
+    cRefNo: "1234",
+    fileRef: "SAP JF 1234",
+    billOfLadingNo: "123-45678990",
+    gateNo: "14",
+    periodIn: "21/09/2024 17:05",
+    containerType: "Container Type",
+    fileStatus: "Under Process",
+    barcode:""
+  },
+  {
+    id: 4,
+    customerName: "Tzkar Creative",
+    cRefNo: "1234",
+    fileRef: "SAP JF 1234",
+    billOfLadingNo: "123-45678990",
+    gateNo: "14",
+    periodIn: "21/09/2024 17:05",
+    containerType: "Container Type",
+    fileStatus: "Under Process",
+    barcode:""
+  },
+];
+
 export const truckTypes = [
   { id: 1, name: "16 - wheeler" },
   { id: 2, name: "18 - wheeler" },
@@ -225,6 +276,14 @@ export const documentType = [
   export const warehouseTabs = [
     { id: 1, Title: "Discharging In progress", param: "" },
     { id: 2, Title: "In Warehouse", param: "" },
+    { id: 3, Title: "Loading In Progress", param: "" },
+    { id: 4, Title: "Delivered", param: "" },
+    { id: 5, Title: "Closed", param: "" },
+  ];
+
+  export const containerTabs = [
+    { id: 1, Title: "Discharging In Progress", param: "" },
+    { id: 2, Title: "In YARD", param: "" },
     { id: 3, Title: "Loading In Progress", param: "" },
     { id: 4, Title: "Delivered", param: "" },
     { id: 5, Title: "Closed", param: "" },
