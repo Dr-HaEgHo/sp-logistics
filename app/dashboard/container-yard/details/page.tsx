@@ -21,7 +21,6 @@ import {
 import Modal from "@/components/Modal";
 import DeliveryProof from "@/components/warehouse/details/DeliveryProof";
 import OperationSummary from "@/components/warehouse/details/OperationSummary";
-import WarehouseDetails from "@/components/warehouse/details/WarehouseDetails";
 import { GlobalContext } from "@/context/context";
 import { ArrowDown2 } from "iconsax-react";
 import dynamic from "next/dynamic";
@@ -34,6 +33,7 @@ import "react-quill/dist/quill.snow.css";
 import "react-phone-input-2/lib/style.css";
 import { RadioCheck } from "@/components/CheckBox";
 import PalletTable from "@/components/warehouse/details/PalletTable";
+import ContainerDetails from "@/components/container/details/ContainerDetails";
 
 const documentType = [
   { id: 1, name: "1" },
@@ -715,7 +715,7 @@ const Page = () => {
         </div>
       </Modal>
 
-      {tab === "details" && <WarehouseDetails />}
+      {tab === "details" && <ContainerDetails />}
       {tab === "sales-invoices" && <SalesInvoice />}
       {tab === "purchase-invoices" && <PurchaseInvoice />}
       {tab === "quotation" && <Quotation />}

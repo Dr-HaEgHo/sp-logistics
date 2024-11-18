@@ -136,7 +136,7 @@ const ContainerYard = () => {
               <li key={idx}>
                 <FilledButton
                   cta={() => {
-                    router.push(`?dir=warehouse&tab=${tab.id}`);
+                    router.push(`?dir=container-yard&tab=${tab.id}`);
                   }}
                   text={tab.Title}
                   btnClass={`bg-bg2 border-sec600 rounded !py-[13px] px-4 ${
