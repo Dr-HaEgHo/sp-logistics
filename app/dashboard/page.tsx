@@ -4,7 +4,7 @@ import CardLoader from "@/components/CardLoader";
 // import OngoingCard from "@/components/OngoingCard";
 // import withProtectedRoute from "@/components/ProtectedRoute";
 import SomethingWentWrong from "@/components/SomethingWentWrong";
-import { getLatestCourses, getOngoingCourses } from "@/store/courses/courseAction";
+// import { getLatestCourses, getOngoingCourses } from "@/store/courses/courseAction";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -23,32 +23,32 @@ const Page = () => {
 
   const dispatch = useAppDispatch()
   const userDetails = useAppSelector(state => state.auth.userDetails)
-  const latest = useAppSelector((state) => state.courses.latestCourses);
+  // const latest = useAppSelector((state) => state.courses.latestCourses);
   // const ongoing = useAppSelector((state) => state.courses.ongoingCourses);
-  const isLatestLoading = useAppSelector(state => state.courses.latestLoading)
-  const isOngoingLoading = useAppSelector(state => state.courses.ongoingLoading)
+  // const isLatestLoading = useAppSelector(state => state.courses.latestLoading)
+  // const isOngoingLoading = useAppSelector(state => state.courses.ongoingLoading)
 
   const [latestLoading, setLatestLoading] = useState<boolean>(false)
   const [ongoingLoading, setOngoingLoading] = useState<boolean>(false)
 
-  useEffect(() => {
-    dispatch(getLatestCourses())
-    dispatch(getOngoingCourses())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(getLatestCourses())
+  //   dispatch(getOngoingCourses())
+  // }, [])
 
-  useEffect(() => {
-    if(isLatestLoading){
-        setLatestLoading(true)
-    }else (
-        setLatestLoading(false)
-    )
+  // useEffect(() => {
+  //   if(isLatestLoading){
+  //       setLatestLoading(true)
+  //   }else (
+  //       setLatestLoading(false)
+  //   )
 
-    if(isOngoingLoading){
-        setOngoingLoading(true)
-    }else{
-        setOngoingLoading(false)
-    }
-  }, [latestLoading, ongoingLoading])
+  //   if(isOngoingLoading){
+  //       setOngoingLoading(true)
+  //   }else{
+  //       setOngoingLoading(false)
+  //   }
+  // }, [latestLoading, ongoingLoading])
 
   return (
     <div className="w-full h-full bg-white ">
@@ -99,7 +99,7 @@ const Page = () => {
           </div>
 
           {/*LATEST COURSES MAPPED OUT */}
-          <div className={`flex gap-[18px] 2xl:gap-[24px] md:justify-between`}>
+          {/* <div className={`flex gap-[18px] 2xl:gap-[24px] md:justify-between`}>
             {latestLoading === true ? (
               <CardLoader />
             ) : (
@@ -107,7 +107,7 @@ const Page = () => {
                 {latest ? (
                   latest.slice(0,3).map((item, idx) => (
                     <div key={idx} className={`w-full md:w-[33%] ${idx === 2 && 'hidden md:flex' } ${idx === 1 && 'hidden sm:flex' }`}>
-                      {/* <LatestCard data={item} action={()=> {router.push(`/dashboard/courses?id=${item.id}`)}}/> */}
+                      <LatestCard data={item} action={()=> {router.push(`/dashboard/courses?id=${item.id}`)}}/>
                     </div>
                   ))
                 ) : (
@@ -115,7 +115,7 @@ const Page = () => {
                 )}
               </>
             )}
-          </div>
+          </div> */}
 
           {/* DIVIDER DIV  */}
           <div className="w-full py-[16px] 2xl:py-[30px] flex items-center gap-[12px]">
