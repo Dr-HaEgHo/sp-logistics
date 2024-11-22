@@ -42,9 +42,12 @@ const config: Config = {
         tableBorderGreen: "#D1E6E6",
         tableHeaderGreen: "#F1F8F6",
 
-
         hover1:"#C4CECE",
         hover2:"#D9D9D9",
+        hoverRed: "#920A0A",
+
+        disableRed:"#FFA5A5",
+        disableGreen: "#7CB4B4",
 
 
         accept: "#30A149",

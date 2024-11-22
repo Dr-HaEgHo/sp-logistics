@@ -95,7 +95,7 @@ const QuotationTable: FC<TableProps> = ({ data, loading }) => {
                             <div
                               className="absolute top-[5px] left-0 flex item-center justify-center"
                             >
-                             <CheckBox/>
+                             <CheckBox checked={true} setChecked={() => {}}/>
                             </div>
                             {/* other side */}
                             <div className="h-full flex items-center justify-center">

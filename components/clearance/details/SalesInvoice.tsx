@@ -82,7 +82,7 @@ const SalesInvoice = () => {
       <div>
           <div className="flex items-center justify-start gap-4">
             <div className="flex items-center gap-2">
-              <CheckBox/>
+              <CheckBox checked={true} setChecked={() => {}}/>
               <ArrowDown2 variant="Bold" className="text-sec700" size={20} />
             </div>
 

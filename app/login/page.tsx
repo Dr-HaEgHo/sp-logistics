@@ -9,23 +9,30 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { login } from "@/store/auth/authActions";
 
 const Page = () => {
-    const router = useRouter();
-  const isLoading: boolean = false; /* auth.loading; */
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+
+  const isLoading = useAppSelector((state) => state.auth.loading);
+  const token = useAppSelector((state) => state.auth.userToken);
 
   const [formButtonDisabled, setFormButtonDisabled] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
   const [ isRemembered, setIsRemembered ] = useState<boolean>(false);
 
-  const onSubmit = () => {};
+  const onSubmit = () => {
+    console.log('the login something: ', values)
+    dispatch(login(values));
+  };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: {
         email: "",
         password: "",
-        confirmPassword: "",
       },
       validationSchema: loginSchema,
       onSubmit,
@@ -38,16 +45,23 @@ const Page = () => {
   }, [isLoading]);
 
   useEffect(() => {
+    if(!token){
+      return;
+    }
+
+    router.push('/dashboard/clearance');
+    console.log('the token: ', token)
+  }, [token])
+
+  useEffect(() => {
     if (
-      values.email !== "" &&
-      values.password !== "" &&
-      !errors.email &&
-      !errors.password &&
-      loading === false
+      values.email === "" ||
+      values.password === "" ||
+      errors.email ||
+      errors.password ||
+      loading === true
     ) {
       setFormButtonDisabled(true);
-    } else if (loading === true) {
-      setFormButtonDisabled(false);
     } else {
       setFormButtonDisabled(false);
     }
@@ -88,7 +102,7 @@ const Page = () => {
             type="text"
             placeholder="email@example.com"
           />
-          <p className="mont font-[500] text-grey900 text-xs mt-3 text-right cursor-pointer hover:underline">Forgot Username</p>
+          <a href="/login/forgot-username" className="mont font-[500] text-grey900 text-xs mt-3 text-right cursor-pointer hover:underline">Forgot Username</a>
           </div>
           <div>
           <PasswordInputFade
@@ -102,9 +116,9 @@ const Page = () => {
             label="Password"
             placeholder="Enter password"
           />
-          <p className="text-xs text-right mt-3 mont text-grey900 cursor-pointer hover:underline">
+          <a href="/login/forgot-password" className="text-xs text-right mt-3 mont text-grey900 cursor-pointer hover:underline">
             Forgot Password?
-          </p>
+          </a>
           </div>
           
 
@@ -130,11 +144,12 @@ const Page = () => {
               </div>
 
           <FilledButton
-            cta={() => router.push("/dashboard/clearance?dir=search&tab=All")}
-            text="Sign In With Email"
+            type="submit"
+            text=""
             // image={require("../../assets/icons/Mail.svg")}
-            btnClass="bg-primary hover:bg-secBg"
+            btnClass="bg-primary hover:bg-secBg disabled:bg-disableRed"
             pClass="text-textBody"
+            disabled={formButtonDisabled}
           >
             {loading === true ? <LoadButton /> : <p className="text-white">Login</p>}
           </FilledButton>

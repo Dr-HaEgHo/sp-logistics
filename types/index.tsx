@@ -178,13 +178,13 @@ export interface signUpType {
   lastname: string;
   email: string;
   password: string;
-  confirmPassword: string;
+  confirmPassword?: string;
 }
 
 export interface loginType {
   email: string;
   password: string;
-  confirmPassword: string;
+  confirmPassword?: string;
 }
 
 export type statusType = "pending" | "done" | "failed";
@@ -348,6 +348,8 @@ export interface button {
   btnClass?: string;
   image?: string;
   children?: React.ReactNode;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset" | undefined;
 }
 
 export interface DeliveryProps {

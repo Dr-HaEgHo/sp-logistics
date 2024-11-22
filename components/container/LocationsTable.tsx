@@ -110,7 +110,7 @@ const LocationsTable: FC<TableProps> = ({ data, loading }) => {
                       <tr className="w-full flex items-center last:border-b-0 border-b border-tableBorderGreen justify-between hover:bg-sidebarTxtHover active:bg-sidebarTxtActive transition duration-200 cursor-pointer">
                         <td className="table-body4 relative !border-l-0">
                             <div className="absolute top-0 left-0 p-[2px]"> 
-                                <CheckBox/>
+                                <CheckBox checked={true} setChecked={() => {}}/>
                             </div>
                             <p className="text-grey900 text-sm">{item.location }</p>
                         </td>

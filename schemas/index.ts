@@ -13,10 +13,10 @@ export const signupSchema = yup.object().shape({
         .min(8)
         .matches(passwordRules, { message: "Passwords must contain atleast one lowercase letter and one number" })
         .required("Required"),
-    confirmPassword: yup
-        .string()
-        .oneOf([yup.ref('password'), undefined], "Passwords must match")
-        .required("Required")
+    // confirmPassword: yup
+    //     .string()
+    //     .oneOf([yup.ref('password'), undefined], "Passwords must match")
+    //     .required("Required")
 });
 
 export const emailSchema = yup.object().shape({

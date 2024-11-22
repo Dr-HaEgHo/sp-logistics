@@ -3,7 +3,7 @@ import { dropDownProps, emailInputPropsFade, plateInputPropsFade, prefixInputPro
 import { ArrowDown2, ArrowUp2, Eye, EyeSlash } from 'iconsax-react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { ChangeEvent, FC, useEffect, useRef, useState } from 'react'
 
 export const DropDownFade = dynamic(() => import('../components/dynamic/DropFade'), {
     ssr : false,
@@ -55,17 +55,34 @@ export const PlateInputFade: FC<plateInputPropsFade> = (props) => {
 
 export const PrefixInput: FC<prefixInputPropsFade> = (props) => {
 
-    const [ first, setFirst ] = useState<string | null>(null);
-    const [ second, setSecond ] = useState<number | null>(null);
+    const [ first, setFirst ] = useState<string>('');
+    const [ second, setSecond ] = useState<string>('');
 
-    const [ full, setFull] = useState<number | null>(null)
+    const [ full, setFull] = useState<string>('')
+
+    const handleFirstChange = (e:ChangeEvent<HTMLInputElement>) => {
+        setFirst(e.target.value)
+    }
+
+    const handleSecondChange = (e:ChangeEvent<HTMLInputElement>) => {
+        setSecond(e.target.value)
+    }
+
+    useEffect(() => {
+        if(!props.setValue){
+            return
+        }
+
+        props.setValue(`${first}+${second}`)
+    }, [first, second])
+
 
     return (
         <div className='input-wrap' >
             { props.label && <label className={`labelsFade ${props.lClass}`}>{props.label && props.label}</label>}
             <div className='w-full flex gap-2'>
-                <input value={props.value} type={props?.type} onChange={props.handleChange} onBlur={props.blur} disabled={props?.isDisabled} className={`input max-w-[62px] !px-2 ${props.iClass}`} placeholder={props.placeholder && props.placeholder} />
-                <input id={props.id} value={props.value2} type={props?.type2} onChange={props.handleChange} onBlur={props.blur} disabled={props?.isDisabled} className={`input ${props.iClass}`} placeholder={props.placeholder2 && props.placeholder2} />
+                <input value={first} type={props?.type} onChange={handleFirstChange} onBlur={props.blur} disabled={props?.isDisabled} className={`input max-w-[62px] !px-2 ${props.iClass}`} placeholder={props.placeholder && props.placeholder} />
+                <input id={props.id} value={props.value2} type={props?.type2} onChange={handleSecondChange} onBlur={props.blur} disabled={props?.isDisabled} className={`input ${props.iClass}`} placeholder={props.placeholder2 && props.placeholder2} />
             </div>
             { props.error && <p className='text-error text-[10px] italic'>{props.error}</p>}
         </div>

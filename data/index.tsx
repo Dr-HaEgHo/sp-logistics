@@ -302,3 +302,39 @@ export const documentType = [
     { id: 3, location: "Zone C", fileRef: "FR12345", branch: "Main", barcode:"", status: "Active"},
     { id: 4, location: "Zone D", fileRef: "", branch: "Main", barcode:"", status: "Inactive"}
   ]
+
+  
+export const codes = [
+  { id: 1, name: "Business" },
+  { id: 2, name: "Marketing Agency" },
+  { id: 3, name: "Solopreneur / Freelancer" },
+  { id: 4, name: "Other" },
+];
+
+export const movementTypes = [
+  { id: 1, name: "Air" },
+  { id: 2, name: "Ocean" },
+  { id: 3, name: "Land" },
+];
+
+export const ports = [
+  { id: 1, name: "Jeddah Islamic Port" },
+  { id: 2, name: "King Abdullah Port" },
+  { id: 3, name: "Yanbu Commercial Port" },
+  { id: 4, name: "Yanbu Industrial Port" },
+  { id: 5, name: "Dhiba Port" },
+  { id: 6, name: "King Abdulaziz Port" },
+  { id: 7, name: "Jubail Commercial Port" },
+  { id: 8, name: "Jubail Industrial Port" },
+  { id: 9, name: "Ras Al Khair Port" },
+  { id: 10, name: "Ras Tanura Port" },
+  { id: 11, name: "Khafji Port" }
+];
+
+
+
+export const tabs2 = [
+  { id: 1, title: "All", count: "3340" },
+  { id: 1, title: "Opened", count: "3330" },
+  { id: 1, title: "Closed", count: "500" },
+];

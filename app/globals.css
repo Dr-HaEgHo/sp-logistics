@@ -321,6 +321,10 @@ input:disabled{
   animation: lineGrow 3s ease-in-out;
 }
 
+.spinning-logo{
+  animation: spinner 1s infinite linear;
+}
+
 .spin{
   animation: spinner .3s infinite linear;
 }

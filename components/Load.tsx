@@ -43,11 +43,7 @@ export const LoadButton = () => {
       <div className="flex flex-col gap-4 items-center justify-center z-50">
         <div className="flex items-center flex-col gap-1">
           <div className="spinning-logo rounded-full flex items-center justify-center text-white font-bold">
-            {/* <Image 
-                src={require('../assets/icons/logowhite.svg')}
-                alt="logo"
-                className="w-6 h-6"
-            /> */}
+            <div className="h-8 w-8 border-4 border-dashed rounded-full opacity-70 "></div>
           </div>
         </div>
       </div>

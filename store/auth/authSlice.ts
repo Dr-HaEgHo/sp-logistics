@@ -78,8 +78,8 @@ export const authSlice = createSlice({
       state.loading = false;
       state.loginSuccess = true;
       state.isLoggedIn = true
-      state.userDetails = payload?.data.user;
-      state.userToken = payload?.data.token;
+      state.userDetails = payload?.data?.data.user;
+      state.userToken = payload?.data?.data.token;
     }),
     builder.addCase(login.rejected, (state, { payload }) => {
       state.loading = false;

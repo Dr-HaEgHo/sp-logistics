@@ -81,7 +81,7 @@ const Locations = () => {
         </div>
       </Modal>
       <div className="w-full flex items-center justify-start gap-3 mb-7">
-        <CheckBox />
+        <CheckBox checked={true} setChecked={() => {}}/>
         <p className="text-sm text-grey900 font-medium">All</p>
       </div>
 

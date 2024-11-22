@@ -11,8 +11,12 @@ interface radioProps {
   size?: string;
 }
 
-const CheckBox = () => {
-  const [checked, setChecked] = useState<boolean>(false);
+interface checkProps {
+  checked: boolean;
+  setChecked: Function;
+}
+
+const CheckBox: FC<checkProps> = ({checked, setChecked}) => {
 
   return (
     <div
