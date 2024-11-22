@@ -1,13 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import authReducer from './auth/authSlice';
-import courseReducer from './courses/courseSlice';
 import clearanceReducer from './clearance/clearanceSlice';
 // import dashReducer from './dashboard/dashSlice';
 // import incuReducer  from './incubatees/incuSlice';
 // import userReducer from './users/userSlice';
 import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage';
-import ChatReducer from './chats/ChatSlice';
 
 const persistConfig = {
     key: 'root',
