@@ -347,3 +347,10 @@ export const specialHandlings = [
   { id: 5, name: "handling five" },
   { id: 6, name: "handling six" },
 ];
+export const containerTypes = [
+  { id: 1, name: "mini container" },
+  { id: 2, name: "short container" },
+  { id: 3, name: "medium container" },
+  { id: 4, name: "long container" },
+  { id: 5, name: "maxi container" },
+];

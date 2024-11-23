@@ -23,7 +23,7 @@ import { RadioCheck } from "../CheckBox";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { LoadButton } from "../Load";
 import { clearCreateSuccess } from "@/store/clearance/clearanceSlice";
-import { createNewClearance } from "@/store/clearance/clearanceAction";
+import { createNewClearance, getAllFiles } from "@/store/clearance/clearanceAction";
 
 const CreateNew = () => {
   const router = useRouter();
@@ -76,7 +76,7 @@ const CreateNew = () => {
       case 'Air': 
         return 'air-movement'
       case 'Ocean' :
-        return 'ocean-movemnent';
+        return 'ocean-movement';
       case 'Land' : 
         return 'land-movement'
       default:
@@ -306,6 +306,9 @@ const CreateNew = () => {
             text="Back"
             btnClass=" !w-fit px-[30px]"
             pClass="text-dark800 text-lg font-medium"
+            cta={() => {
+              dispatch(getAllFiles())
+            }}
           />
           <FilledButton
             text=""

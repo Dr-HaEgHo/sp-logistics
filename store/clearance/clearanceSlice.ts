@@ -1,16 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addAirMovement, createNewClearance } from "./clearanceAction";
+import { addAirMovement, addOceanMovement, createNewClearance } from "./clearanceAction";
 
 interface clearanceState {
   loading: boolean;
   createSuccess: boolean;
   airMovementSuccess: boolean;
+  oceanMovementSuccess: boolean;
+  fileId: string;
 }
 
 const initialState: clearanceState = {
   loading: false,
   createSuccess: false,
   airMovementSuccess: false,
+  oceanMovementSuccess: false,
+  fileId: ""
 };
 
 const clearanceSlice = createSlice({
@@ -23,6 +27,9 @@ const clearanceSlice = createSlice({
     clearAirMovementSuccess: (state) => {
       state.airMovementSuccess = false;
     },
+    clearOceanMovementSuccess: (state) => {
+      state.airMovementSuccess = false;
+    },
   },
   extraReducers: (builder) => {
     // ============================================================================== CREATE NEW
@@ -32,12 +39,13 @@ const clearanceSlice = createSlice({
       builder.addCase(createNewClearance.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.createSuccess = true;
+        state.fileId = payload?.data.data.id;
       }),
       builder.addCase(createNewClearance.rejected, (state, { payload }) => {
         state.loading = false;
       });
 
-    // ============================================================================== CREATE NEW
+    // ============================================================================== ADD AIR MOVEMENT
     builder.addCase(addAirMovement.pending, (state, { payload }) => {
       state.loading = true;
     }),
@@ -48,6 +56,19 @@ const clearanceSlice = createSlice({
       builder.addCase(addAirMovement.rejected, (state, { payload }) => {
         state.loading = false;
       });
+
+
+    // ============================================================================== ADD OCEAN MOVEMENT
+    builder.addCase(addOceanMovement.pending, (state, { payload }) => {
+      state.loading = true;
+    }),
+      builder.addCase(addOceanMovement.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.oceanMovementSuccess = true;
+      }),
+      builder.addCase(addOceanMovement.rejected, (state, { payload }) => {
+        state.loading = false;
+      });
   },
 });
 
@@ -55,7 +76,8 @@ const clearanceSlice = createSlice({
 
 export const { 
     clearCreateSuccess, 
-    clearAirMovementSuccess
+    clearAirMovementSuccess,
+    clearOceanMovementSuccess
  } =  clearanceSlice.actions;
 
 export default clearanceSlice.reducer;

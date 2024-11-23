@@ -27,6 +27,11 @@ import DeliveryTable from "../DeliveryTable";
 import DeliveryFilled from "../DeliveryFilled";
 import { DeliveryProps } from "@/types";
 import FileStatusTable from "../FileStatusTable";
+import { containerTypes } from "@/data";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { addOceanMovement } from "@/store/clearance/clearanceAction";
+import { clearOceanMovementSuccess } from "@/store/clearance/clearanceSlice";
+import { LoadButton } from "../Load";
 
 const codes = [
   { id: 1, name: "Business" },
@@ -45,6 +50,10 @@ const OceanMovement = () => {
   const router = useRouter();
   const search = useSearchParams();
   const qTab = new URLSearchParams(search).get("tab");
+  const dispatch = useAppDispatch();
+
+  const isLoading = useAppSelector((state) => state.clearance.loading);
+  const success = useAppSelector((state) => state.clearance.oceanMovementSuccess);
 
   const { headerInfo, setHeaderInfo } = useContext(GlobalContext);
   const [customer, setCustomer] = useState<string>("");
@@ -52,12 +61,162 @@ const OceanMovement = () => {
   const [addContainerOpen, setAddContainerOpen] = useState<boolean>(false);
   const [consigneeOpen, setConsigneeOpen] = useState<boolean>(false);
   const [shipperOpen, setShipperOpen] = useState<boolean>(false);
+  const [disabled, setDisabled] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  // FORM VARIABLES
   const [consignee, setConsignee] = useState<DeliveryProps | null>(null);
   const [shipper, setShipper] = useState<DeliveryProps | null>(null);
+  const [noOfParcels, setNoOfParcels] = useState<number | undefined>(undefined);
+  const [grossWeight, setGrossWeight] = useState<number | undefined>(undefined);
+  const [ContainerType, setContainerType] = useState<string>("");
+  const [noOfContainers, setNoOfContainers] = useState<number | undefined>(
+    undefined
+  );
+  const [description, setDescription] = useState<string>("");
+  const [portOfLoading, setPortOfLoading] = useState<string>("");
+  const [arrivalPort, setArrivalPort] = useState<string>("");
+  const [arrivalCarrier, setArrivalCarrier] = useState<string>("");
+  const [arrivalVesselName, setArrivalVesselName] = useState<string>("");
+  const [arrivalVoyageNumber, setArrivalVoyageNumber] = useState<string>("");
+  const [arrivalDate, setArrivalDate] = useState<string>("");
+  const [fasahNumber, setFasahNumber] = useState<string>("");
+  const [bayanNumber, setBayanNumber] = useState<string>("");
+  const [bayanDate, setBayanDate] = useState<string>("");
+
+  // THE SUBMIT HANDLER
+  const submit = () => {
+    if (consignee === null || shipper === null) {
+      return;
+    }
+    let values = {
+      consignee,
+      shipper,
+      noOfParcels,
+      grossWeight,
+      ContainerType,
+      noOfContainers,
+      description,
+      portOfLoading,
+      arrivalPort,
+      arrivalCarrier,
+      arrivalVesselName,
+      arrivalVoyageNumber,
+      arrivalDate,
+      fasahNumber,
+      bayanNumber,
+      bayanDate,
+    };
+
+    dispatch(addOceanMovement(values));
+  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    submit();
   };
+
+  // HANDLES THE BUTTON DISABLE FEATURE
+  useEffect(() => {
+    if (
+      consignee === null ||
+      shipper === null ||
+      noOfParcels === undefined ||
+      grossWeight === undefined ||
+      ContainerType === "" ||
+      noOfContainers === undefined ||
+      description === "" ||
+      portOfLoading === "" ||
+      arrivalPort === "" ||
+      arrivalCarrier === "" ||
+      arrivalVesselName === "" ||
+      arrivalVoyageNumber === "" ||
+      arrivalDate === "" ||
+      fasahNumber === "" ||
+      bayanNumber === "" ||
+      bayanDate === ""
+    ) {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+
+    console.log("all ", {
+      consignee,
+      shipper,
+      noOfParcels,
+      grossWeight,
+      ContainerType,
+      noOfContainers,
+      description,
+      portOfLoading,
+      arrivalPort,
+      arrivalCarrier,
+      arrivalVesselName,
+      arrivalVoyageNumber,
+      arrivalDate,
+      fasahNumber,
+      bayanNumber,
+      bayanDate,
+    });
+    console.log("disabled", disabled);
+  }, [
+    consignee,
+    shipper,
+    noOfParcels,
+    grossWeight,
+    ContainerType,
+    noOfContainers,
+    description,
+    portOfLoading,
+    arrivalPort,
+    arrivalCarrier,
+    arrivalVesselName,
+    arrivalVoyageNumber,
+    arrivalDate,
+    fasahNumber,
+    bayanNumber,
+    bayanDate,
+  ]);
+
+  // HANDLES THE LOADING
+  useEffect(() => {
+    if (isLoading) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  }, [isLoading]);
+
+  // THIS CLEARS THE FORM AND ROUTE TO THE PROPER  ROUTE ON SUCCESS DEPENDING ON WHAT MOVEMENT TYPE IS CHOSEN
+  useEffect(() => {
+    if (success === true) {
+      setConsignee(null);
+      setShipper(null);
+      setNoOfParcels(undefined);
+      setGrossWeight(undefined);
+      setContainerType("");
+      setNoOfContainers(undefined);
+      setDescription("");
+      setPortOfLoading("");
+      setArrivalPort("");
+      setArrivalCarrier("");
+      setArrivalVesselName("");
+      setArrivalVoyageNumber("");
+      setArrivalDate("");
+      setFasahNumber("");
+      setBayanNumber("");
+      setBayanDate("");
+      router.push(`/dashboard/clearance/details`);
+    }
+    setTimeout(() => {
+      dispatch(clearOceanMovementSuccess());
+    }, 800);
+  }, [success]);
+
+  useEffect(() => {
+    console.log("this is the dscription: ", );
+  }, []);
 
   // set the header info in context on component mount
   useEffect(() => {
@@ -173,14 +332,13 @@ const OceanMovement = () => {
               }}
             />
           </div>
-         
+
           <div className="px-10 mt-[60px] bg-white flex items-center justify-end">
             <FilledButton
               text="Save"
               btnClass="bg-primary rounded !w-fit px-7 !h-fit"
               pClass="font-medium text-white text-lg"
-              cta={() => {
-              }}
+              cta={() => {}}
             />
           </div>
         </div>
@@ -193,7 +351,7 @@ const OceanMovement = () => {
 
       {/* Form section to fill details */}
       <div className="w-full mx-auto ">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5 mb-[50px]">
+        <form onSubmit={submit} className="flex flex-col gap-5 mb-[50px]">
           <div className="w-full flex items-start gap-[26px]">
             {consignee !== null ? (
               <DeliveryFilled
@@ -237,27 +395,36 @@ const OceanMovement = () => {
               type="number"
               label="Gross Weight"
               placeholder="Select your company type"
+              value={grossWeight}
+              handleChange={(e) => setGrossWeight(parseInt(e.target.value))}
             />
             <InputFade
               type="number"
               placeholder="Enter Number"
               label="Number of Parcels"
+              value={noOfParcels}
+              handleChange={(e) => setNoOfParcels(parseInt(e.target.value))}
             />
           </div>
 
           <div className="w-full flex items-center gap-[26px]">
             <DropDownFade
-              type="number"
+              type="text"
               placeholder="Enter Number"
               label="Container Type"
-              data={codes}
-              setValue={() => {}}
+              data={containerTypes}
+              value={ContainerType}
+              setValue={setContainerType}
             />
             <div className="w-full flex items-end gap-20">
               <InputFade
                 type="number"
                 placeholder="Enter Number"
                 label="Number of Containers"
+                value={noOfContainers}
+                handleChange={(e) =>
+                  setNoOfContainers(parseInt(e.target.value))
+                }
               />
               <FilledButton
                 text="Add Container"
@@ -274,8 +441,8 @@ const OceanMovement = () => {
           <div className="w-full flex items-center gap-[26px]">
             <TextArea
               type="text"
-              //   value={customer}
-              setValue={setCustomer}
+              value={description}
+              setValue={setDescription}
               label="Description of the goods"
               placeholder="Enter Description"
               iClass="h-[84px] text-base"
@@ -287,11 +454,15 @@ const OceanMovement = () => {
               type="text"
               placeholder="Enter PRIFEX Code"
               label="Port of Loading"
+              value={portOfLoading}
+              handleChange={(e) => setPortOfLoading(e.target.value)}
             />
             <InputFade
               type="text"
               placeholder="Enter PRIFEX Code"
               label="Arrival Port"
+              value={arrivalPort}
+              handleChange={(e) => setArrivalPort(e.target.value)}
             />
           </div>
         </form>
@@ -312,23 +483,29 @@ const OceanMovement = () => {
               type="text"
               placeholder="Enter Airline Code"
               label="Carrier"
+              value={arrivalCarrier}
+              handleChange={(e) => setArrivalCarrier(e.target.value)}
             />
             <InputFade
               type="text"
               placeholder="Enter Vessel Name"
               label="Vessel Name"
+              value={arrivalVesselName}
+              handleChange={(e) => setArrivalVesselName(e.target.value)}
             />
             <InputFade
               type="text"
               placeholder="Enter Voyage Number"
               label="Voyage Number"
+              value={arrivalVoyageNumber}
+              handleChange={(e) => setArrivalVoyageNumber(e.target.value)}
             />
             <DateInputFade
               id="select customer"
               placeholder="Select from CustomerFile"
               label="Arrival Date"
-              value=""
-              cta={() => {}}
+              value={arrivalDate}
+              handleChange={(e) => setArrivalDate(e.target.value)}
             />
           </div>
         </form>
@@ -346,21 +523,25 @@ const OceanMovement = () => {
         <form action="" className="flex flex-col gap-5 mb-[50px]">
           <div className="w-full flex items-start gap-[26px]">
             <InputFade
-              type="number"
+              type="text"
               placeholder="Enter number"
               label="DRAFT Number"
+              value={fasahNumber}
+              handleChange={(e) => setFasahNumber(e.target.value)}
             />
             <InputFade
-              type="number"
+              type="text"
               placeholder="Enter number"
               label="BAYAN Number"
+              value={bayanNumber}
+              handleChange={(e) => setBayanNumber(e.target.value)}
             />
             <DateInputFade
               id="select customer"
               placeholder="Select from CustomerFile"
               label="BAYAN Date"
-              value=""
-              cta={() => {}}
+              value={bayanDate}
+              handleChange={(e) => setBayanDate(e.target.value)}
             />
           </div>
         </form>
@@ -373,9 +554,17 @@ const OceanMovement = () => {
           />
           <FilledButton
             text="Next"
-            btnClass=" bg-primary !flex-row-reverse !w-fit px-[30px]"
+            btnClass="bg-primary !flex-row-reverse !w-fit px-[30px] disabled:bg-disableRed hover:bg-hoverRed active:bg-primary"
             pClass="text-white text-lg font-medium"
-          />
+            disabled={disabled}
+            cta={() => submit()}
+          >
+            {loading === true ? (
+              <LoadButton />
+            ) : (
+              <p className="text-white">Next</p>
+            )}
+          </FilledButton>
         </div>
       </div>
     </div>

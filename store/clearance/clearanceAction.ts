@@ -17,22 +17,41 @@ interface createNew {
 }
 
 interface addMovement {
-    consignee: DeliveryProps | null;
-    shipper: DeliveryProps | null;
-    specialHandling: string;
-    noOfParcels: number | undefined;
-    grossWeight: number | undefined;
-    chargeableWeight: number | undefined;
-    description: string;
-    portOfLoading: string;
-    arrivalPort: string;
-    arrivalCarrier: string;
-    arrivalFlightCode: string;
-    arrivalFlightNumber: string;
-    arrivalDate: string;
-    fasahNumber: string;
-    bayanNumber: string;
-    bayanDate: string;
+  consignee: DeliveryProps | null;
+  shipper: DeliveryProps | null;
+  specialHandling: string;
+  noOfParcels: number | undefined;
+  grossWeight: number | undefined;
+  chargeableWeight: number | undefined;
+  description: string;
+  portOfLoading: string;
+  arrivalPort: string;
+  arrivalCarrier: string;
+  arrivalFlightCode: string;
+  arrivalFlightNumber: string;
+  arrivalDate: string;
+  fasahNumber: string;
+  bayanNumber: string;
+  bayanDate: string;
+}
+
+interface addMovementOcean {
+  consignee: DeliveryProps | null;
+  shipper: DeliveryProps | null;
+  noOfParcels: number | undefined;
+  grossWeight: number | undefined;
+  ContainerType: string;
+  noOfContainers: number | undefined;
+  description: string;
+  portOfLoading: string;
+  arrivalPort: string;
+  arrivalCarrier: string;
+  arrivalVesselName: string;
+  arrivalVoyageNumber: string;
+  arrivalDate: string;
+  fasahNumber: string;
+  bayanNumber: string;
+  bayanDate: string;
 }
 
 // ================================================================= CREATE NEW CLEARANCE
@@ -51,7 +70,7 @@ export const createNewClearance = createAsyncThunk(
           customer_reference_number: values.customerRefNumber,
           business_unit: values.businessUnit,
           port: values.port,
-          movement_type: values.movementType,
+          movement_type: values.movementType.toLowerCase(),
           delivery: JSON.stringify(values.deli),
           pickup_by_customer: values.pickUp,
         },
@@ -80,7 +99,7 @@ export const createNewClearance = createAsyncThunk(
   }
 );
 
-// ================================================================= CREATE NEW CLEARANCE
+// ================================================================= ADD AIR MOVEMENT TYPE
 export const addAirMovement = createAsyncThunk(
   "addAirMovement",
   async (values: addMovement, { rejectWithValue, getState }) => {
@@ -88,7 +107,7 @@ export const addAirMovement = createAsyncThunk(
     try {
       // const token = getState().auth.token
       const res = await axios.post(
-        `${baseUrl}/custom-clearance/files/:fileid/add-movement-type`,
+        `${baseUrl}/custom-clearance/files/1/add-movement-type`,
         {
           consignee: JSON.stringify(values.consignee),
           shipper: JSON.stringify(values.shipper),
@@ -120,6 +139,94 @@ export const addAirMovement = createAsyncThunk(
         return res;
       }
     } catch (err: any) {
+      if (err.response.status === 400) {
+        cogoToast.error("Something went Wrong");
+        return rejectWithValue(err.response);
+      } else {
+        cogoToast.error("Something went Wrong too");
+        return rejectWithValue(err.response);
+      }
+      // return rejectWithValue(err);
+    }
+  }
+);
+
+// ================================================================= ADD OCEAN MOVEMENT TYPE
+export const addOceanMovement = createAsyncThunk(
+  "addOceanMovement",
+  async (values: addMovementOcean, { rejectWithValue, getState }) => {
+    const { auth, clearance } = getState() as RootState;
+    try {
+      // const token = getState().auth.token
+      const res = await axios.post(
+        `${baseUrl}/custom-clearance/files/${clearance.fileId}/add-movement-type`,
+        {
+          consignee: JSON.stringify(values.consignee),
+          shipper: JSON.stringify(values.shipper),
+          number_of_parcel: values.noOfParcels,
+          gross_weight: values.grossWeight,
+          container_type: values.ContainerType,
+          number_of_container: values.noOfContainers,
+          description: values.description,
+          port_of_loading: values.portOfLoading,
+          arrival_port: values.arrivalPort,
+          arrival_carrier: values.arrivalCarrier,
+          arrival_vessel_name: values.arrivalVesselName,
+          arrival_voyage_number: values.arrivalVoyageNumber,
+          arrival_date: values.arrivalDate,
+          fasah_draft_number: values.fasahNumber,
+          fasah_bayan_number: values.bayanNumber,
+          fasah_bayan_date: values.bayanDate,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            AUTHORIZATION: `Bearer ${auth.userToken}`,
+          },
+        }
+      );
+      if (res.status === 200 || res.status === 201) {
+        cogoToast.success("Success: New file creater successfully");
+        console.log("onboarding data", res);
+        return res;
+      }
+    } catch (err: any) {
+        console.log('axios error', err)
+      if (err.response.status === 400) {
+        cogoToast.error("Something went Wrong");
+        return rejectWithValue(err.response);
+      } else {
+        cogoToast.error("Something went Wrong too");
+        return rejectWithValue(err.response);
+      }
+      // return rejectWithValue(err);
+    }
+  }
+);
+
+// ================================================================= ADD OCEAN MOVEMENT TYPE
+export const getAllFiles = createAsyncThunk(
+  "getAllFiles",
+  async (_,{ rejectWithValue, getState }) => {
+    const { auth, clearance } = getState() as RootState;
+    try {
+      // const token = getState().auth.token
+      const res = await axios.get(
+        `${baseUrl}/custom-clearance/files`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            AUTHORIZATION: `Bearer ${auth.userToken}`,
+          },
+        }
+      );
+      if (res.status === 200 || res.status === 201) {
+        cogoToast.success("Success: New file creater successfully");
+        console.log("all clearance files", res);
+        return res;
+      }
+    } catch (err: any) {
+        console.log('axios error', err)
       if (err.response.status === 400) {
         cogoToast.error("Something went Wrong");
         return rejectWithValue(err.response);

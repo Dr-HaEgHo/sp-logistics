@@ -131,26 +131,7 @@ const AirMovement = () => {
     } else {
       setDisabled(false);
     }
-
-    console.log("all ", {
-      consignee,
-      shipper,
-      specialHandling,
-      noOfParcels,
-      grossWeight,
-      chargeableWeight,
-      description,
-      portOfLoading,
-      arrivalPort,
-      arrivalCarrier,
-      arrivalFlightCode,
-      arrivalFlightNumber,
-      arrivalDate,
-      fasahNumber,
-      bayanNumber,
-      bayanDate,
-    });
-    console.log("disabled", disabled);
+   
   }, [
     consignee,
     shipper,
@@ -204,10 +185,6 @@ const AirMovement = () => {
       dispatch(clearAirMovementSuccess());
     }, 800);
   }, [success]);
-
-  useEffect(() => {
-    console.log("this is the dscription: ", arrivalFlightNumber);
-  }, [arrivalFlightNumber]);
 
   // set the header info in context on component mount
   useEffect(() => {
