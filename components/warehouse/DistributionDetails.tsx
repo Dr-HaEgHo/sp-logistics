@@ -59,24 +59,22 @@ const DistributionDetails = () => {
     e.preventDefault();
   };
 
+  useEffect(() => {
+    if (yes === true) {
+      setNo(false);
+      // setYes(true)
+    }
+  }, [yes]);
 
   useEffect(() => {
-    if(yes === true) {
-        setNo(false)
-        // setYes(true)
+    if (no === true) {
+      setYes(false);
+      // setNo(true)
     }
-
-  }, [yes])
-
-  useEffect(() => {
-    if(no === true){
-        setYes(false)
-        // setNo(true)
-    }
-  }, [no])
+  }, [no]);
   // set the header info in context on component mount
   useEffect(() => {
-    setHeaderInfo("Distribution Details"); 
+    setHeaderInfo("Distribution Details");
   }, []);
 
   return (
@@ -380,7 +378,12 @@ const DistributionDetails = () => {
             </div>
 
             <div className="w-full flex items-center gap-[26px]">
-              <TextArea label="Damage Details" placeholder="" type="text" />
+              <TextArea
+                setValue={() => {}}
+                label="Damage Details"
+                placeholder=""
+                type="text"
+              />
               <div className="w-full"></div>
             </div>
           </div>
