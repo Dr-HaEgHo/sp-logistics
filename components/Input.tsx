@@ -125,7 +125,7 @@ export const FileInputFade: FC<fileInputProps> = (props) => {
         <div className='input-wrap' >
             <label className={`labels ${props.lClass}`}>{props.label && props.label}</label>
             <div className={`password-input`} >
-                <input id={props.id} className={`file-input cursor-pointer z-10 ${props.iClass}`} type={props.type ? "text" : "text"}  onBlur={props.blur} disabled={props?.isDisabled} placeholder={props.placeholder && props.placeholder} />
+                <input id={props.id} className={`file-input cursor-pointer z-10 disabled:bg-white disabled:border-grey500 ${props.iClass}`} type={props.type ? "text" : "text"}  onBlur={props.blur} disabled={/* props?.isDisabled */ true} placeholder={props.placeholder && props.placeholder} />
                 <div onClick={props.cta} className='absolute cursor-pointer bg-bg2 border border-grey500 rounded-tr rounded-br hover:bg-bg3 active:bg-bg2 transition duration-200 h-10 w-10 right-0  top-1/2 transform -translate-y-1/2 flex items-center justify-center text-icons'>
                     <Image 
                         src={require('../assets/icons/select-window.svg')}
