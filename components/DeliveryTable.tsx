@@ -90,8 +90,8 @@ const DeliveryTable: FC<TableProps> = ({ data, loading, setValue, setOpen }) => 
               ) : (
                 <>
                   {status &&
-                    status.map((item) => (
-                      <tr className="w-full flex items-center justify-between hover:bg-sidebarTxtHover active:bg-sidebarTxtActive transition duration-200 cursor-pointer">
+                    status.map((item, idx) => (
+                      <tr key={idx} className="w-full flex items-center justify-between hover:bg-sidebarTxtHover active:bg-sidebarTxtActive transition duration-200 cursor-pointer">
                         <td className="table-body-green !border-l-0 !justify-start">
                           <p className="w-full flex items-center justify-center gap-2">
                             Warehouse 1

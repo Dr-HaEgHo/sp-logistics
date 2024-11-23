@@ -42,7 +42,7 @@ const CreateNew = () => {
   const [businessUnit, setBusinessUnit] = useState<string>("");
   const [port, setPort] = useState<string>("");
   const [pickUp, setPickUp] = useState<0 | 1>(0);
-  const [movemenType, setMovementType] = useState<string>("");
+  const [movementType, setMovementType] = useState<string>("");
   const [checked, setChecked] = useState<boolean>(false);
   const [deliOpen, setDeliOpen] = useState<boolean>(false);
   const [deli, setDeli] = useState<DeliveryProps | null>(null);
@@ -50,6 +50,7 @@ const CreateNew = () => {
   const [ loading, setLoading ] = useState<boolean>(false)
 
 
+  // reassigns values to object and dispatches call to the backend
   const submit = () => {
     // if(deli === null){
     //   return;
@@ -60,7 +61,7 @@ const CreateNew = () => {
       customerRefNumber, 
       businessUnit, 
       port, 
-      movemenType, 
+      movementType, 
       pickUp,
       deli
     }
@@ -68,11 +69,28 @@ const CreateNew = () => {
     dispatch(createNewClearance(values))
   }
 
+
+  // THIS CHECKS THE MOVEMENT TYPE WHICH DETERMINES WHERE THE PAGE ROUTES TO
+  const checkMovementType = () => {
+    switch (movementType) {
+      case 'Air': 
+        return 'air-movement'
+      case 'Ocean' :
+        return 'ocean-movemnent';
+      case 'Land' : 
+        return 'land-movement'
+      default:
+          return ""
+    }
+  }
+
   // set the header info in context on component mount
   useEffect(() => {
     setHeaderInfo("Create New");
   }, []);
 
+
+  // set the value for the pickup to be sent to BE 
   useEffect(() => {
     if(checked){
       setPickUp(1);
@@ -82,6 +100,7 @@ const CreateNew = () => {
     console.log("bill something: ", pickUp);
   }, [checked]);
 
+  // HANDLES THE DISABLE BUTTON
   useEffect(() => {
     if(
       customer === "" || 
@@ -89,7 +108,7 @@ const CreateNew = () => {
       customerRefNumber === "" || 
       businessUnit === "" || 
       port === "" || 
-      movemenType === "" || 
+      movementType === "" || 
       deli === null
     ) {
       setDisabled(true)
@@ -103,13 +122,15 @@ const CreateNew = () => {
       customerRefNumber, 
       businessUnit, 
       port, 
-      movemenType, 
+      movementType, 
       deli
     })
     console.log('disabled', disabled)
 
-  }, [customer, billOfLading, customerRefNumber, businessUnit, port, pickUp, movemenType, deli, ])
+  }, [customer, billOfLading, customerRefNumber, businessUnit, port, pickUp, movementType, deli, ])
 
+
+  // HANDLES THE LOADING 
   useEffect(() => {
     if(isLoading) {
       setLoading(true)
@@ -118,8 +139,9 @@ const CreateNew = () => {
     }
   }, [isLoading]);
 
+  // THIS CLEARS THE FORM AND ROUTE TO THE PROPER  ROUTE ON SUCCESS DEPENDING ON WHAT MOVEMENT TYPE IS CHOSEN
   useEffect(() => {
-    if(createSuccess) {
+    if(createSuccess === true)  {
       setCustomer('') 
       setBillOfLading('') 
       setCustomerRefNumber('') 
@@ -128,8 +150,8 @@ const CreateNew = () => {
       setMovementType('') 
       setDeli(null)
       setPickUp(0)
+      router.push(`/dashboard/clearance?dir=${checkMovementType()}`)
     }
-
     setTimeout(() => {
       dispatch(clearCreateSuccess());
     }, 800);
@@ -246,7 +268,7 @@ const CreateNew = () => {
             />
             <DropDownFade
               type="text"
-              value={movemenType}
+              value={movementType}
               setValue={setMovementType}
               label="Movement Type"
               placeholder="Select type"

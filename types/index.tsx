@@ -36,6 +36,23 @@ export interface emailInputPropsFade {
   blur?: React.FocusEventHandler<HTMLInputElement> | undefined;
 }
 
+export interface textAreaProps {
+  id?: string;
+  label?: string;
+  placeholder: string;
+  type: string;
+  setValue: Function;
+  value?: any;
+  error?: string | undefined;
+  isDisabled?: boolean;
+  lClass?: string;
+  iClass?: string;
+  iwClass?: string;
+  touched?: boolean | undefined;
+  handleChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
+  blur?: React.FocusEventHandler<HTMLInputElement> | undefined;
+}
+
 export interface plateInputPropsFade {
   id?: string;
   label?: string;
@@ -82,6 +99,23 @@ export interface pwInputProps {
   placeholder: string;
   setValue?: Function;
   value: any;
+  error?: string | undefined;
+  cta?: () => void;
+  isDisabled?: boolean;
+  removeIcon?: boolean;
+  lClass?: string;
+  iClass?: string;
+  type?: string;
+  touched?: boolean | undefined;
+  handleChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
+  blur?: React.FocusEventHandler<HTMLInputElement> | undefined;
+}
+export interface fileInputProps {
+  id: string;
+  label?: string;
+  placeholder: string;
+  setValue?: Function;
+  value?: any;
   error?: string | undefined;
   cta?: () => void;
   isDisabled?: boolean;

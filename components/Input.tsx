@@ -1,5 +1,5 @@
 'use client'
-import { dropDownProps, emailInputPropsFade, plateInputPropsFade, prefixInputPropsFade, pwInputProps, searchInputProps } from '@/types'
+import { dropDownProps, emailInputPropsFade, fileInputProps, plateInputPropsFade, prefixInputPropsFade, pwInputProps, searchInputProps, textAreaProps } from '@/types'
 import { ArrowDown2, ArrowUp2, Eye, EyeSlash } from 'iconsax-react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -113,7 +113,7 @@ export const PasswordInputFade: FC<pwInputProps> = (props) => {
     )
 }
 
-export const FileInputFade: FC<pwInputProps> = (props) => {
+export const FileInputFade: FC<fileInputProps> = (props) => {
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -125,7 +125,7 @@ export const FileInputFade: FC<pwInputProps> = (props) => {
         <div className='input-wrap' >
             <label className={`labels ${props.lClass}`}>{props.label && props.label}</label>
             <div className={`password-input`} >
-                <input id={props.id} className={`file-input cursor-pointer z-10 ${props.iClass}`} value={props.value} type={props.type ? "text" : "text"} onChange={props.handleChange} onBlur={props.blur} disabled={props?.isDisabled} placeholder={props.placeholder && props.placeholder} />
+                <input id={props.id} className={`file-input cursor-pointer z-10 ${props.iClass}`} type={props.type ? "text" : "text"}  onBlur={props.blur} disabled={props?.isDisabled} placeholder={props.placeholder && props.placeholder} />
                 <div onClick={props.cta} className='absolute cursor-pointer bg-bg2 border border-grey500 rounded-tr rounded-br hover:bg-bg3 active:bg-bg2 transition duration-200 h-10 w-10 right-0  top-1/2 transform -translate-y-1/2 flex items-center justify-center text-icons'>
                     <Image 
                         src={require('../assets/icons/select-window.svg')}
@@ -380,11 +380,11 @@ export const DropDown: FC<pwInputProps> = (props) => {
 
 
 
-export const TextArea: FC<emailInputPropsFade> = (props) => {
+export const TextArea: FC<textAreaProps> = (props) => {
     return (
         <div className='input-wrap' >
             { props.label && <label className={`labelsFade text-grey900 ${props.lClass}`}>{props.label && props.label}</label>}
-            <textarea id={props.id} value={props.value} disabled={props?.isDisabled} className={`input !text-links ${props.iClass}`} placeholder={props.placeholder && props.placeholder} />
+            <textarea id={props.id} onChange={(e) => props?.setValue(e.target.value)} value={props.value} disabled={props?.isDisabled} className={`input !text-links ${props.iClass}`} placeholder={props.placeholder && props.placeholder} />
             { props.error && <p className='text-error text-[10px] italic'>{props.error}</p>}
         </div>
     )

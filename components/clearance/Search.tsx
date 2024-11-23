@@ -39,7 +39,7 @@ const Search = () => {
   const qTab = new URLSearchParams(search).get("tab");
 
   const { headerInfo, setHeaderInfo } = useContext(GlobalContext);
-  const [modalOpen, setmodalOpen] = useState<boolean>(true);
+  const [modalOpen, setmodalOpen] = useState<boolean>(false);
   const [customer, setCustomer] = useState<string>("");
   const [checked, setChecked] = useState<boolean>(false);
 

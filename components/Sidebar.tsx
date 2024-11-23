@@ -241,8 +241,8 @@ const Sidebar = () => {
       {/* / mapping links */}
       <div className="">
         {links &&
-          links.map((link) => (
-            <div className="flex flex-col gap-4">
+          links.map((link, idx) => (
+            <div key={idx} className="flex flex-col gap-4">
               <h3 className="text-sm text-grey600 pl-4">{link?.header}</h3>
               <ul className="flex flex-col gap-2 w-full">
                 {link.sublinks &&

@@ -338,3 +338,12 @@ export const tabs2 = [
   { id: 1, title: "Opened", count: "3330" },
   { id: 1, title: "Closed", count: "500" },
 ];
+
+export const specialHandlings = [
+  { id: 1, name: "handling one" },
+  { id: 2, name: "handling two" },
+  { id: 3, name: "handling three" },
+  { id: 4, name: "handling four" },
+  { id: 5, name: "handling five" },
+  { id: 6, name: "handling six" },
+];
